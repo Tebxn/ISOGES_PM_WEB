@@ -1,4 +1,5 @@
-﻿using System;
+﻿using project_management_for_ISOGES.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +9,27 @@ namespace project_management_for_ISOGES.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index() => View();
+
+        [HttpGet]
+        public ActionResult Login() => View();
+        [HttpPost]
+        public ActionResult Login(UserEnt user)
         {
-            return View();
+            /* PROGRA */
+
+            return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public ActionResult Register() => View();
+        [HttpPost]
+        public ActionResult Register(UserEnt user)
         {
-            ViewBag.Message = "Your application description page.";
+            /* PROGRA */
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return RedirectToAction("Login", "Home");
         }
     }
 }
