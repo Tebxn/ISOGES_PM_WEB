@@ -5,7 +5,7 @@ using System.Web;
 
 namespace project_management_for_ISOGES.Entities
 {
-    public class UserEnt
+    public class UserEnt // Empleado
     {
         public string Email { get; set; }
         public string Password { get; set; }

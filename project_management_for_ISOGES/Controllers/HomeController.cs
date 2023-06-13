@@ -1,4 +1,5 @@
 ﻿using project_management_for_ISOGES.Entities;
+using project_management_for_ISOGES.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,10 @@ namespace project_management_for_ISOGES.Controllers
         [HttpGet]
         public ActionResult Login() => View();
         [HttpPost]
-        public ActionResult Login(UserEnt user)
+        public ActionResult Login(UserEnt entidad)
         {
-            /* PROGRA */
+            UsuarioModel model = new UsuarioModel();
+            model.IniciarSesion(entidad);
 
             return RedirectToAction("Index", "Home");
         }
@@ -25,9 +27,10 @@ namespace project_management_for_ISOGES.Controllers
         [HttpGet]
         public ActionResult Register() => View();
         [HttpPost]
-        public ActionResult Register(UserEnt user)
+        public ActionResult Register(UserEnt entidad)
         {
-            /* PROGRA */
+            UsuarioModel model = new UsuarioModel();
+            model.RegistrarUsuario(entidad);
 
             return RedirectToAction("Login", "Home");
         }
