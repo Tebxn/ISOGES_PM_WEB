@@ -44,5 +44,21 @@ namespace project_management_for_ISOGES.Models
                 return 0;
             }
         }
+
+        public List<UsuarioEnt> ConsultarUsuarios()
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarUsuarios";
+                HttpResponseMessage resp = client.GetAsync(url).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<List<UsuarioEnt>>().Result;
+                }
+
+                return new List<UsuarioEnt>();
+            }
+        }
     }
 }

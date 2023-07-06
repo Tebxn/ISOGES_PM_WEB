@@ -11,6 +11,15 @@ namespace project_management_for_ISOGES.Controllers
 {
     public class UsuarioController : Controller
     {
+        UsuarioModel model = new UsuarioModel();
+
+        [HttpGet]
+        public ActionResult ConsultarUsuarios()
+        {
+            var resp = model.ConsultarUsuarios();
+            return View(resp);
+        }
+
         [HttpGet]
         public ActionResult CrearUsuario() => View();
 
