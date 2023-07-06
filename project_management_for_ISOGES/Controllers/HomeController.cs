@@ -10,29 +10,37 @@ namespace project_management_for_ISOGES.Controllers
 {
     public class HomeController : Controller
     {
-        [HttpGet]
-        public ActionResult Index() => View();
-
-        [HttpGet]
-        public ActionResult Login() => View();
-        [HttpPost]
-        public ActionResult Login(UserEnt entidad)
+        public ActionResult Login()
         {
-            UsuarioModel model = new UsuarioModel();
-            model.IniciarSesion(entidad);
+            return View();
+        }
 
-            return RedirectToAction("Index", "Home");
+        UsuarioModel model = new UsuarioModel();
+
+        [HttpPost]
+        public ActionResult IniciarSesion(UsuarioEnt entidad)
+        {
+            var resp = model.IniciarSesion(entidad);
+
+            if (resp != null)
+            {
+                
+                Session["NombreUsuario"] = resp.Nombre;
+                Session["Apellido1"] = resp.Apellido1;
+                Session["NombreTipoUsuario"] = resp.NombreTipoUsuario;
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Login");
+            }
         }
 
         [HttpGet]
-        public ActionResult Register() => View();
-        [HttpPost]
-        public ActionResult Register(UserEnt entidad)
+        public ActionResult Index()
         {
-            UsuarioModel model = new UsuarioModel();
-            model.RegistrarUsuario(entidad);
-
-            return RedirectToAction("Login", "Home");
+            return View();
         }
+
     }
 }
