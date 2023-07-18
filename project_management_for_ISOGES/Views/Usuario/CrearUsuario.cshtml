@@ -1,6 +1,6 @@
 ﻿@model project_management_for_ISOGES.Entities.UsuarioEnt
 @{
-    ViewBag.Title = "CrearUsuario";
+    ViewBag.Title = "Crear Usuario";
 }
 
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -8,39 +8,62 @@
     <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
         <div class="d-flex align-items-center justify-content-center w-100">
             <div class="row justify-content-center w-100">
-                <div class="col-md-8 col-lg-6 col-xxl-3">
+                <div class="col-md-10 col-lg-8 col-xxl-6">
                     <div class="card mb-0">
                         <div class="card-body">
-                            <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                <img src="~/Images/isoges_new_logo1000x500.png" width="180" alt="">
-                            </a>
-                            @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+                            @using (Html.BeginForm("CrearUsuario", "Usuario", FormMethod.Post))
                             {
                                 <form>
-                                    <div class="mb-3">
-                                        <label for="Name" class="form-label">Identificación</label>
-                                        @Html.TextBoxFor(m => m.Id, new { @type = "text", @class = "form-control", @placeholder = "Identificación" })
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="Nombre" class="form-label">Nombre</label>
+                                            @Html.TextBoxFor(m => m.Nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Apellido1" class="form-label">Primer apellido</label>
+                                            @Html.TextBoxFor(m => m.Apellido1, new { @type = "text", @class = "form-control", @placeholder = "Primer Apellido" })
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="Name" class="form-label">Nombre</label>
-                                        @Html.TextBoxFor(m => m.Name, new { @type = "text", @class = "form-control", @placeholder = "Nombre" })
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="Apellido2" class="form-label">Segundo apellido</label>
+                                            @Html.TextBoxFor(m => m.Apellido2, new { @type = "text", @class = "form-control", @placeholder = "Segundo Apellido" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Identificacion" class="form-label">Cédula</label>
+                                            @Html.TextBoxFor(m => m.Identificacion, new { @type = "text", @class = "form-control", @placeholder = "Cédula" })
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="LastName" class="form-label">Apellido</label>
-                                        @Html.TextBoxFor(m => m.LastName, new { @type = "text", @class = "form-control", @placeholder = "Apellido" })
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="CorreoElectronico" class="form-label">Correo Electrónico</label>
+                                            @Html.TextBoxFor(m => m.CorreoElectronico, new { @type = "email", @class = "form-control", @placeholder = "Correo Electronico" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Telefono" class="form-label">Teléfono</label>
+                                            @Html.TextBoxFor(m => m.Telefono, new { @type = "text", @class = "form-control", @placeholder = "Teléfono" })
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="Email" class="form-label">Correo Electrónico</label>
-                                        @Html.TextBoxFor(m => m.Email, new { @type = "email", @class = "form-control", @placeholder = "Correo Electrónico" })
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="TipoUsuario" class="form-label">Tipo Usuario</label>
+                                            @Html.TextBoxFor(m => m.TipoUsuario, new { @type = "number", @class = "form-control", @placeholder = "Tipo Usuario" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Contrasena" class="form-label">Contraseña</label>
+                                            @Html.TextBoxFor(m => m.Contrasena, new { @type = "password", @class = "form-control", @placeholder = "Contraseña" })
+                                        </div>
                                     </div>
-                                    <div class="mb-4">
-                                        <label for="Email" class="form-label">Contraseña</label>
-                                        @Html.TextBoxFor(m => m.Email, new { @type = "email", @class = "form-control", @placeholder = "Contraseña" })
+                                    <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <label for="Puesto" class="form-label">Puesto</label>
+                                            @Html.TextBoxFor(m => m.Puesto, new { @type = "text", @class = "form-control", @placeholder = "Puesto" })
+                                        </div>
                                     </div>
-                                    <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Registrarse</a>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <p class="fs-4 mb-0 fw-bold">Ya tienes una cuenta?</p>
-                                        <a class="text-primary fw-bold ms-2" href="./authentication-login.html">Iniciar Sesión</a>
+                                    <div class="row justify-content-center">
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-primary w-100 py-2 fs-4 rounded-2">Crear Usuario</button>
+                                        </div>
                                     </div>
                                 </form>
                             }
@@ -51,4 +74,6 @@
         </div>
     </div>
 </div>
+
+
 

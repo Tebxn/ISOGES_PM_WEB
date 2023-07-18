@@ -42,5 +42,12 @@ namespace project_management_for_ISOGES.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult CerrarSesion()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Home");
+        }
+
     }
 }

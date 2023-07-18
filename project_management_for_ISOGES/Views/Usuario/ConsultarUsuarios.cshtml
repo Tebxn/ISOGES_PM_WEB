@@ -23,13 +23,14 @@
                                 <th>Puesto</th>
                                 <th>Permisos</th>
                                 <th>Estado</th>
-                                <th></th>
+                                <th>Accion</th>
                             </tr>
                         <thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
                                 <tr>
+                                    <td>@item.IdUsuario</td>
                                     <td>@item.Identificacion</td>
                                     <td>@item.Nombre</td>
                                     <td>@item.Apellido1</td>
@@ -48,11 +49,15 @@
                                             <p>Inactivo</p>
                                         }
                                     </td>
+                                    <td>
+                                        <button type="button" class="btn btn-light">Editar</button>
+                                        <button type="button" class="btn btn-danger">Eliminar</button>
+                                    </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-
+                    <a class="btn btn-success float-end" href="@Url.Action("CrearUsuario","Usuario")">Agregar Usuario</a>
                 </div>
             </div>
         </div>

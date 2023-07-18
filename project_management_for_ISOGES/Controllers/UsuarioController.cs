@@ -29,7 +29,7 @@ namespace project_management_for_ISOGES.Controllers
             UsuarioModel model = new UsuarioModel();
             model.CrearUsuario(entidad);
 
-            return RedirectToAction("Login", "Home");
+            return RedirectToAction("ConsultarUsuarios", "Usuario");
         }
     }
 }
