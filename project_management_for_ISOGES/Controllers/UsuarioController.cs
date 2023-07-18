@@ -2,7 +2,10 @@
 using project_management_for_ISOGES.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net.Http.Json;
+using System.Net.Http;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
@@ -30,6 +33,26 @@ namespace project_management_for_ISOGES.Controllers
             model.CrearUsuario(entidad);
 
             return RedirectToAction("ConsultarUsuarios", "Usuario");
+        }
+
+        [HttpGet]
+        public ActionResult InactivarUsuario(long q)
+        {
+            UsuarioEnt entidad = new UsuarioEnt();
+            entidad.IdUsuario = q;
+
+            var resp = model.InactivarUsuario(entidad);
+
+            if (resp > 0)
+            {
+                ViewBag.MsjPantalla = "Usuario Inactivo";
+                return RedirectToAction("ConsultarUsuarios", "Usuario");
+            }
+            else
+            {
+                ViewBag.MsjPantalla = "No se ha podido Inactivar el estado del usuario";
+                return View("ConsultarUsuarios", "Usuario");
+            }
         }
     }
 }

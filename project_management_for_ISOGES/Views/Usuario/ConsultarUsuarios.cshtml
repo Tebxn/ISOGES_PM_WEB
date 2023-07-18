@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<project_management_for_ISOGES.Entities.UsuarioEnt>
 
 @{
-    ViewBag.Title = "Consultar Usuarios";
+    ViewBag.Title = "ConsultarUsuarios";
 }
 
 <div class="body-wrapper">
@@ -51,13 +51,24 @@
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-light">Editar</button>
-                                        <button type="button" class="btn btn-danger">Eliminar</button>
+                                        <a href="@Url.Action("InactivarUsuario","Usuario", new { q = item.IdUsuario })" class="btn btn-danger">Inactivar</a>
                                     </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a class="btn btn-success float-end" href="@Url.Action("CrearUsuario","Usuario")">Agregar Usuario</a>
+                    <div class="row">
+                        <div class="col-8">
+                            <div style="text-align:center" class="alert alert-warning" role="alert">
+                                @ViewBag.MsjPantalla
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <a class="btn btn-success" href="@Url.Action("CrearUsuario","Usuario")">Agregar Usuario</a>
+                        </div>
+                        
+                    </div>
+                    
                 </div>
             </div>
         </div>

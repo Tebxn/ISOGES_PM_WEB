@@ -60,5 +60,22 @@ namespace project_management_for_ISOGES.Models
                 return new List<UsuarioEnt>();
             }
         }
+
+        public int InactivarUsuario(UsuarioEnt entidad)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/InactivarUsuario";
+                JsonContent body = JsonContent.Create(entidad); //Serializar
+                HttpResponseMessage resp = client.PutAsync(url, body).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<int>().Result;
+                }
+
+                return 0;
+            }
+        }
     }
 }
