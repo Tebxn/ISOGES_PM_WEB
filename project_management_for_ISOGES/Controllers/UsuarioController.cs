@@ -24,7 +24,28 @@ namespace project_management_for_ISOGES.Controllers
         }
 
         [HttpGet]
-        public ActionResult CrearUsuario() => View();
+        public ActionResult CrearUsuario()
+        {
+            var respRoles = model.ConsultarTiposUsuarios();
+            var respPuestos = model.ConsultarPuestos();
+
+            var roles = new List<SelectListItem>();
+            foreach (var item in respRoles)
+            {
+                roles.Add(new SelectListItem { Value = item.IdTipoUsuario.ToString(), Text = item.NombreTipo.ToString() });
+            }
+
+            var puestos = new List<SelectListItem>();
+            foreach (var item in respPuestos)
+            {
+                puestos.Add(new SelectListItem { Value = item.IdPuesto.ToString(), Text = item.NombrePuesto.ToString() });
+            }
+
+            ViewBag.ComboRoles = roles;
+            ViewBag.ComboPuestos = puestos;
+
+            return View();
+        }
 
         [HttpPost]
         public ActionResult CrearUsuario(Entities.UsuarioEnt entidad)
@@ -53,6 +74,30 @@ namespace project_management_for_ISOGES.Controllers
                 ViewBag.MsjPantalla = "No se ha podido Inactivar el estado del usuario";
                 return View("ConsultarUsuarios", "Usuario");
             }
+        }
+
+        [HttpGet]
+        public ActionResult EditarUsuario(long q)
+        {
+            var resp = model.ConsultaUsuarioPorId(q);
+            var respRoles = model.ConsultarTiposUsuarios();
+            var respPuestos = model.ConsultarPuestos();
+
+            var roles = new List<SelectListItem>();
+            foreach (var item in respRoles)
+            {
+                roles.Add(new SelectListItem { Value = item.IdTipoUsuario.ToString(), Text = item.NombreTipo.ToString() });
+            }
+
+            var puestos = new List<SelectListItem>();
+            foreach (var item in respPuestos)
+            {
+                puestos.Add(new SelectListItem { Value = item.IdPuesto.ToString(), Text = item.NombrePuesto.ToString() });
+            }
+
+            ViewBag.ComboRoles = roles;
+            ViewBag.ComboPuestos = puestos;
+            return View(resp);
         }
     }
 }

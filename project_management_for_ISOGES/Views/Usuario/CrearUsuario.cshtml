@@ -1,6 +1,6 @@
 ﻿@model project_management_for_ISOGES.Entities.UsuarioEnt
 @{
-    ViewBag.Title = "Crear Usuario";
+    ViewBag.Title = "CrearUsuario";
 }
 
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -47,11 +47,13 @@
                                     <div class="row mb-3">
                                         <div class="col-md-6">
                                             <label for="TipoUsuario" class="form-label">Tipo Usuario</label>
-                                            @Html.TextBoxFor(m => m.TipoUsuario, new { @type = "number", @class = "form-control", @placeholder = "Tipo Usuario" })
+                                            @Html.DropDownListFor(m => m.TipoUsuario, ViewBag.ComboRoles as List<SelectListItem>, new {@class = "form-control",
+                                            @style = "background-color: white!important" })
                                         </div>
                                         <div class="col-md-6">
                                             <label for="Puesto" class="form-label">Puesto</label>
-                                            @Html.TextBoxFor(m => m.Puesto, new { @type = "text", @class = "form-control", @placeholder = "Puesto" })
+                                            @Html.DropDownListFor(m => m.Puesto, ViewBag.ComboPuestos as List<SelectListItem>, new{@class = "form-control",
+                                            @style = "background-color: white!important"})
                                         </div>
                                     </div>
                                     <div class="row justify-content-center">
