@@ -24,7 +24,19 @@ namespace project_management_for_ISOGES.Controllers
         }
 
         [HttpGet]
-        public ActionResult CrearUsuario() => View();
+        public ActionResult CrearUsuario()
+        {
+            var respRoles = model.ConsultarTiposUsuarios();
+
+            var roles = new List<SelectListItem>();
+            foreach (var item in respRoles)
+            {
+                roles.Add(new SelectListItem { Value = item.IdTipoUsuario.ToString(), Text = item.NombreTipo.ToString() });
+            }
+            ViewBag.ComboRoles = roles;
+
+            return View();
+        }
 
         [HttpPost]
         public ActionResult CrearUsuario(Entities.UsuarioEnt entidad)

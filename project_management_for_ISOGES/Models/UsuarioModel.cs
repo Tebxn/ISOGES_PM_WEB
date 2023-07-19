@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Web;
+using System.Web.Security;
 
 namespace project_management_for_ISOGES.Models
 {
@@ -75,6 +76,22 @@ namespace project_management_for_ISOGES.Models
                 }
 
                 return 0;
+            }
+        }
+
+        public List<TipoUsuarioEnt> ConsultarTiposUsuarios()
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarTiposUsuarios";
+                HttpResponseMessage resp = client.GetAsync(url).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<List<TipoUsuarioEnt>>().Result;
+                }
+
+                return new List<TipoUsuarioEnt>();
             }
         }
     }
