@@ -155,6 +155,7 @@
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Entities\CobroEnt.cs" />
     <Compile Include="Entities\ProyectoEnt.cs" />
+    <Compile Include="Entities\PuestoEnt.cs" />
     <Compile Include="Entities\RequerimientoEnt.cs" />
     <Compile Include="Entities\TipoUsuarioEnt.cs" />
     <Compile Include="Entities\UsuarioEnt.cs" />
@@ -857,6 +858,7 @@
     <Content Include="Views\Usuario\CrearUsuario.cshtml" />
     <Content Include="Views\Shared\_Layout - Login.cshtml" />
     <Content Include="Views\Usuario\ConsultarUsuarios.cshtml" />
+    <Content Include="Views\Usuario\EditarUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,81 @@
+﻿@model project_management_for_ISOGES.Entities.UsuarioEnt
+@{
+    ViewBag.Title = "EditarUsuario";
+}
+
+<h2>EditarUsuario</h2>
+
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+    <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="d-flex align-items-center justify-content-center w-100">
+            <div class="row justify-content-center w-100">
+                <div class="col-md-10 col-lg-8 col-xxl-6">
+                    <div class="card mb-0">
+                        <div class="card-body">
+                            @using (Html.BeginForm("CrearUsuario", "Usuario", FormMethod.Post))
+                            {
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="Nombre" class="form-label">Nombre</label>
+                                            @Html.TextBoxFor(m => m.Nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre"})
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Apellido1" class="form-label">Primer apellido</label>
+                                            @Html.TextBoxFor(m => m.Apellido1, new { @type = "text", @class = "form-control", @placeholder = "Primer Apellido" })
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="Apellido2" class="form-label">Segundo apellido</label>
+                                            @Html.TextBoxFor(m => m.Apellido2, new { @type = "text", @class = "form-control", @placeholder = "Segundo Apellido" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Identificacion" class="form-label">Cédula</label>
+                                            @Html.TextBoxFor(m => m.Identificacion, new { @type = "text", @class = "form-control", @placeholder = "Cédula" })
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="CorreoElectronico" class="form-label">Correo Electrónico</label>
+                                            @Html.TextBoxFor(m => m.CorreoElectronico, new { @type = "email", @class = "form-control", @placeholder = "Correo Electronico" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Telefono" class="form-label">Teléfono</label>
+                                            @Html.TextBoxFor(m => m.Telefono, new { @type = "text", @class = "form-control", @placeholder = "Teléfono"})
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="TipoUsuario" class="form-label">Tipo Usuario</label>
+                                            @Html.DropDownListFor(m => m.TipoUsuario, ViewBag.ComboRoles as List<SelectListItem>, new
+                                            {
+                                                @class = "form-control",
+                                            @style = "background-color: white!important"
+                                            })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Puesto" class="form-label">Puesto</label>
+                                            @Html.DropDownListFor(m => m.Puesto, ViewBag.ComboPuestos as List<SelectListItem>, new
+                                            {
+                                                @class = "form-control",
+                                            @style = "background-color: white!important"
+                                            })
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-success w-100 py-2 fs-4 rounded-2">Actualizar Usuario</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -52,7 +52,8 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="Puesto" class="form-label">Puesto</label>
-                                            @Html.TextBoxFor(m => m.Puesto, new { @type = "text", @class = "form-control", @placeholder = "Puesto" })
+                                            @Html.DropDownListFor(m => m.Puesto, ViewBag.ComboPuestos as List<SelectListItem>, new{@class = "form-control",
+                                            @style = "background-color: white!important"})
                                         </div>
                                     </div>
                                     <div class="row justify-content-center">
