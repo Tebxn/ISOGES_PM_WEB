@@ -19,5 +19,14 @@ namespace project_management_for_ISOGES.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult CrearProyecto(Entities.ProyectoEnt entidad)
+        {
+            ProyectoModel model = new ProyectoModel();
+            model.CrearProyecto(entidad);
+
+            return RedirectToAction("ConsultarProyectos", "Proyecto");
+        }
+
     }
 }
