@@ -113,7 +113,7 @@ namespace project_management_for_ISOGES.Models
             }
         }
 
-        public UsuarioEnt ConsultaUsuarioPorId(long q)
+        public UsuarioEnt ConsultarUsuarioPorId(long q)
         {
             using (var client = new HttpClient())
             {

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<project_management_for_ISOGES.Entities.RequerimientoEnt>
+
+@{
+    ViewBag.Title = "ConsultarRequerimientos";
+}
+
+<div class="body-wrapper">
+
+        <!--  Row 1 -->
+            <div class="row">
+                <div class="col-12">
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Codigo</th>
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
+                            </tr>
+                        <thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.IdRequerimiento</td>
+                                    <td>@item.Codigo</td>
+                                    <td>@item.Nombre</td>
+                                    <td>@item.Descripcion</td>
+                                    <td>
+                                        <a href="@Url.Action("EditarRequerimiento","Requerimientos", new { q = item.IdRequerimiento })" class="btn btn-light">Editar</a>
+                                        <a href="@Url.Action("EliminarRequerimiento","Requerimientos", new { q = item.IdRequerimiento })" class="btn btn-danger">Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-8">
+                            <div style="text-align:center" class="alert alert-warning" role="alert">
+                                @ViewBag.MsjPantalla
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <a class="btn btn-success" href="@Url.Action("CrearRequerimiento","Requerimientos")">Agregar Requerimiento</a>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+ 
