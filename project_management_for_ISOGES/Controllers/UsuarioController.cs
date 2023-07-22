@@ -79,7 +79,7 @@ namespace project_management_for_ISOGES.Controllers
         [HttpGet]
         public ActionResult EditarUsuario(long q)
         {
-            var resp = model.ConsultaUsuarioPorId(q);
+            var resp = model.ConsultarUsuarioPorId(q);
             var respRoles = model.ConsultarTiposUsuarios();
             var respPuestos = model.ConsultarPuestos();
 

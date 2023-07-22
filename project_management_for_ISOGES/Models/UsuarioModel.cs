@@ -113,11 +113,11 @@ namespace project_management_for_ISOGES.Models
             }
         }
 
-        public UsuarioEnt ConsultaUsuarioPorId(long q)
+        public UsuarioEnt ConsultarUsuarioPorId(long q)
         {
             using (var client = new HttpClient())
             {
-                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultaUsuario?q=" + q;
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarUsuarioPorId?q=" + q;
                 HttpResponseMessage resp = client.GetAsync(url).Result;
 
                 if (resp.IsSuccessStatusCode)

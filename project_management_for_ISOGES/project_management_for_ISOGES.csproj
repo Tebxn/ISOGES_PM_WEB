@@ -154,6 +154,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProyectoController.cs" />
+    <Compile Include="Controllers\RequerimientosController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Entities\CobroEnt.cs" />
     <Compile Include="Entities\ProyectoEnt.cs" />
@@ -165,6 +166,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ProyectoModel.cs" />
+    <Compile Include="Models\RequerimientoModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Models\Utilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -863,7 +865,10 @@
     <Content Include="Views\Shared\_Layout - Login.cshtml" />
     <Content Include="Views\Usuario\ConsultarUsuarios.cshtml" />
     <Content Include="Views\Usuario\EditarUsuario.cshtml" />
-    <Content Include="Views\Proyecto\ConsultarProyectos.cshtml" />
+	  <Content Include="Views\Proyecto\ConsultarProyectos.cshtml" />
+	  <Content Include="Views\Requerimientos\ConsultarRequerimientos.cshtml" />
+	  <Content Include="Views\Requerimientos\CrearRequerimiento.cshtml" />
+	  <Content Include="Views\Requerimientos\EditarRequerimiento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
