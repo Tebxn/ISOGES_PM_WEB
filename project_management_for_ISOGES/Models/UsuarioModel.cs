@@ -117,7 +117,7 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
-                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultaUsuario?q=" + q;
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarUsuarioPorId?q=" + q;
                 HttpResponseMessage resp = client.GetAsync(url).Result;
 
                 if (resp.IsSuccessStatusCode)
@@ -126,6 +126,23 @@ namespace project_management_for_ISOGES.Models
                 }
 
                 return null;
+            }
+        }
+
+        public int EditarUsuario(UsuarioEnt entidad)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/EditarUsuario";
+                JsonContent body = JsonContent.Create(entidad); //Serializar
+                HttpResponseMessage resp = client.PutAsync(url, body).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<int>().Result;
+                }
+
+                return 0;
             }
         }
     }

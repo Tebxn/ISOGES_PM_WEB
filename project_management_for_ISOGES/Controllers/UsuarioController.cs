@@ -99,5 +99,18 @@ namespace project_management_for_ISOGES.Controllers
             ViewBag.ComboPuestos = puestos;
             return View(resp);
         }
+
+        [HttpPost]
+        public ActionResult EditarUsuario(UsuarioEnt entidad)
+        {
+            var resp = model.EditarUsuario(entidad);
+
+            if (resp!=0) 
+            {
+                ViewBag.MsjPantalla = "Error al editar usuario";
+                return View("ConsultarUsuarios");
+            }
+            return View("ConsultarUsuarios");
+        }
     }
 }
