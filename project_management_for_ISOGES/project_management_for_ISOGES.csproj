@@ -156,6 +156,7 @@
     <Compile Include="Controllers\ProyectoController.cs" />
     <Compile Include="Controllers\RequerimientosController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Entities\ClienteEnt.cs" />
     <Compile Include="Entities\CobroEnt.cs" />
     <Compile Include="Entities\ProyectoEnt.cs" />
     <Compile Include="Entities\PuestoEnt.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\ProyectoModel.cs" />
     <Compile Include="Models\RequerimientoModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
@@ -865,10 +867,10 @@
     <Content Include="Views\Shared\_Layout - Login.cshtml" />
     <Content Include="Views\Usuario\ConsultarUsuarios.cshtml" />
     <Content Include="Views\Usuario\EditarUsuario.cshtml" />
-	  <Content Include="Views\Proyecto\ConsultarProyectos.cshtml" />
-	  <Content Include="Views\Requerimientos\ConsultarRequerimientos.cshtml" />
-	  <Content Include="Views\Requerimientos\CrearRequerimiento.cshtml" />
-	  <Content Include="Views\Requerimientos\EditarRequerimiento.cshtml" />
+    <Content Include="Views\Proyecto\ConsultarProyectos.cshtml" />
+    <Content Include="Views\Requerimientos\ConsultarRequerimientos.cshtml" />
+    <Content Include="Views\Requerimientos\CrearRequerimiento.cshtml" />
+    <Content Include="Views\Requerimientos\EditarRequerimiento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
