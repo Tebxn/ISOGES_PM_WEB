@@ -32,8 +32,9 @@
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">INICIO</span>
                         </li>
+                        @*BACKLOG*@
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="@Url.Action("Recuperar","Home")" aria-expanded="false">
+                            <a class="sidebar-link" href="@Url.Action("Index","Home")" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout-dashboard"></i>
                                 </span>
@@ -44,17 +45,18 @@
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">PERSONAL</span>
                         </li>
-
+                        @*BACKLOG*@
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
+                            <a class="sidebar-link" href="@Url.Action("Perfil","Usuario")" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-user"></i>
                                 </span>
                                 <span class="hide-menu">@Session["NombreUsuario"].ToString()  @Session["Apellido1"].ToString()</span>
                             </a>
                         </li>
+                        @*BACKLOG*@
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
+                            <a class="sidebar-link" href="@Url.Action("Agenda","Usuario")" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-calendar"></i>
                                 </span>
@@ -65,6 +67,7 @@
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">PROYECTOS</span>
                         </li>
+                        @*BACKLOG*@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
                                 <span>
@@ -73,6 +76,7 @@
                                 <span class="hide-menu">Listado de proyectos</span>
                             </a>
                         </li>
+                        @*BACKLOG*@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
                                 <span>
@@ -81,6 +85,7 @@
                                 <span class="hide-menu">Cobros</span>
                             </a>
                         </li>
+                        @*BACKLOG*@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
                                 <span>
@@ -97,17 +102,33 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="@Url.Action("ConsultarUsuarios","Usuario")" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-article"></i>
+                                    <i class="ti ti-users"></i>
                                 </span>
                                 <span class="hide-menu">Usuarios</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link" href="@Url.Action("ConsultarProyectos","Proyecto")" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-file"></i>
+                                </span>
+                                <span class="hide-menu">Proyectos</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link" href="@Url.Action("ConsultarRequerimientos","Requerimientos")" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-article"></i>
+                                    <i class="ti ti-books"></i>
                                 </span>
                                 <span class="hide-menu">Requerimientos</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="@Url.Action("ConsultarClientes","Cliente")" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-address-book"></i>
+                                </span>
+                                <span class="hide-menu">Clientes</span>
                             </a>
                         </li>
                         @*FIN ADMIN*@
