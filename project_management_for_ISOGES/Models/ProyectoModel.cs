@@ -44,6 +44,57 @@ namespace project_management_for_ISOGES.Models
             }
         }
 
+        public List<ClienteEnt> ConsultarClientes()
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarClientes";
+                HttpResponseMessage resp = client.GetAsync(url).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<List<ClienteEnt>>().Result;
+                }
+
+                return new List<ClienteEnt>();
+            }
+        }
+
+        public ProyectoEnt ConsultarProyectoPorId(long q)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarProyectoPorId?q=" + q;
+                HttpResponseMessage resp = client.GetAsync(url).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<ProyectoEnt>().Result;
+                }
+
+                return null;
+            }
+        }
+
+        public int EditarProyecto(ProyectoEnt entidad)
+        {
+            using (var proyecto = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/EditarProyecto";
+                JsonContent body = JsonContent.Create(entidad); //Serializar
+                HttpResponseMessage resp = proyecto.PutAsync(url, body).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<int>().Result;
+                }
+
+                return 0;
+            }
+        }
+
+
+
 
 
     }
