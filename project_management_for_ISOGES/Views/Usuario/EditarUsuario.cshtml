@@ -13,63 +13,68 @@
                 <div class="col-md-10 col-lg-8 col-xxl-6">
                     <div class="card mb-0">
                         <div class="card-body">
-                            @using (Html.BeginForm("Editar", "Usuario", FormMethod.Post))
+                            @using (Html.BeginForm("EditarUsuario", "Usuario", FormMethod.Post))
                             {
-                                <form>
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="Nombre" class="form-label">Nombre</label>
-                                            @Html.TextBoxFor(m => m.Nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre"})
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="Apellido1" class="form-label">Primer apellido</label>
-                                            @Html.TextBoxFor(m => m.Apellido1, new { @type = "text", @class = "form-control", @placeholder = "Primer Apellido" })
-                                        </div>
+                                @Html.TextBoxFor(m => m.IdUsuario, new { @type = "hidden", @Value = Model.IdUsuario })
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="Nombre" class="form-label">Nombre</label>
+                                        @Html.TextBoxFor(m => m.Nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre" })
                                     </div>
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="Apellido2" class="form-label">Segundo apellido</label>
-                                            @Html.TextBoxFor(m => m.Apellido2, new { @type = "text", @class = "form-control", @placeholder = "Segundo Apellido" })
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="Identificacion" class="form-label">Cédula</label>
-                                            @Html.TextBoxFor(m => m.Identificacion, new { @type = "text", @class = "form-control", @placeholder = "Cédula" })
-                                        </div>
+                                    <div class="col-md-6">
+                                        <label for="Apellido1" class="form-label">Primer apellido</label>
+                                        @Html.TextBoxFor(m => m.Apellido1, new { @type = "text", @class = "form-control", @placeholder = "Primer Apellido" })
                                     </div>
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="CorreoElectronico" class="form-label">Correo Electrónico</label>
-                                            @Html.TextBoxFor(m => m.CorreoElectronico, new { @type = "email", @class = "form-control", @placeholder = "Correo Electronico" })
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="Telefono" class="form-label">Teléfono</label>
-                                            @Html.TextBoxFor(m => m.Telefono, new { @type = "text", @class = "form-control", @placeholder = "Teléfono"})
-                                        </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="Apellido2" class="form-label">Segundo apellido</label>
+                                        @Html.TextBoxFor(m => m.Apellido2, new { @type = "text", @class = "form-control", @placeholder = "Segundo Apellido" })
                                     </div>
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="TipoUsuario" class="form-label">Tipo Usuario</label>
-                                            @Html.DropDownListFor(m => m.TipoUsuario, ViewBag.ComboRoles as List<SelectListItem>, new
-                                            {
-                                                @class = "form-control",
-                                            @style = "background-color: white!important"
-                                            })
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="Puesto" class="form-label">Puesto</label>
-                                            @Html.DropDownListFor(m => m.Puesto, ViewBag.ComboPuestos as List<SelectListItem>, new
-                                            {
-                                                @class = "form-control",
-                                            @style = "background-color: white!important"
-                                            })
-                                        </div>
+                                    <div class="col-md-6">
+                                        <label for="Identificacion" class="form-label">Cédula</label>
+                                        @Html.TextBoxFor(m => m.Identificacion, new { @type = "text", @class = "form-control", @placeholder = "Cédula" })
                                     </div>
-                                    <div class="row justify-content-center">
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="CorreoElectronico" class="form-label">Correo Electrónico</label>
+                                        @Html.TextBoxFor(m => m.CorreoElectronico, new { @type = "readonly", @class = "form-control", @Value = Model.CorreoElectronico })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="Telefono" class="form-label">Teléfono</label>
+                                        @Html.TextBoxFor(m => m.Telefono, new { @type = "text", @class = "form-control", @placeholder = "Teléfono" })
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="TipoUsuario" class="form-label">Tipo Usuario</label>
+                                        @Html.DropDownListFor(m => m.TipoUsuario, ViewBag.ComboRoles as List<SelectListItem>, new
+                                        {
+                                            @class = "form-control",
+                                        @style = "background-color: white!important"
+                                        })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="Puesto" class="form-label">Puesto</label>
+                                        @Html.DropDownListFor(m => m.Puesto, ViewBag.ComboPuestos as List<SelectListItem>, new
+                                        {
+                                            @class = "form-control",
+                                        @style = "background-color: white!important"
+                                        })
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-info w-100 py-2 fs-4 rounded-2">Actualizar Usuario</button>
+                                    </div>
+                                    @if (Model.Estado == false)
+                                    {
                                         <div class="col-6">
-                                            <button type="submit" class="btn btn-success w-100 py-2 fs-4 rounded-2">Actualizar Usuario</button>
+                                            <button type="submit" formaction="@Url.Action("ActivarUsuario", "Usuario")" class="btn btn-success w-100 py-2 fs-4 rounded-2">Activar Usuario</button>
                                         </div>
-                                    </div>
-                                </form>
+                                    }
+                                </div>
                             }
                         </div>
                     </div>

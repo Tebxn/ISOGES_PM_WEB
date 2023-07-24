@@ -105,12 +105,27 @@ namespace project_management_for_ISOGES.Controllers
         {
             var resp = model.EditarUsuario(entidad);
 
-            if (resp!=0) 
+            if (resp > 0) 
             {
                 ViewBag.MsjPantalla = "Error al editar usuario";
-                return View("ConsultarUsuarios");
+                return RedirectToAction("ConsultarUsuarios", "Usuario");
             }
-            return View("ConsultarUsuarios");
+            ViewBag.MsjPantalla = "Usuario Editado con exito";
+            return RedirectToAction("ConsultarUsuarios", "Usuario");
+        }
+
+        [HttpPost]
+        public ActionResult ActivarUsuario(UsuarioEnt entidad)
+        {
+            var resp = model.ActivarUsuario(entidad);
+
+            if (resp > 0)
+            {
+                ViewBag.MsjPantalla = "Error al Reactivar usuario";
+                return RedirectToAction("ConsultarUsuarios", "Usuario");
+            }
+            ViewBag.MsjPantalla = "Usuario Reactivado con exito";
+            return RedirectToAction("ConsultarUsuarios", "Usuario");
         }
     }
 }
