@@ -41,8 +41,8 @@
                         </td>
                         <td>
                         <td>
-                            <a href="@Url.Action("EditarUsuario","Usuario", new { q = item.IdProyecto })" class="btn btn-success">Editar</a>
-                            <a href="@Url.Action("InactivarUsuario","Usuario", new { q = item.IdProyecto })" class="btn btn-danger">Inactivar</a>
+                            <a href="@Url.Action("EditarProyecto","Proyecto", new { q = item.IdProyecto })" class="btn btn-success">Editar</a>
+                            <a href="@Url.Action("InactivarProyecto","Proyecto", new { q = item.IdProyecto })" class="btn btn-danger">Inactivar</a>
                         </td>
                         </td>
                     </tr>
@@ -55,9 +55,16 @@
                         @ViewBag.MsjPantalla
                     </div>
                 </div>
-                <div class="col-4">
+               
 
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <a class="btn btn-primary float-left" href="@Url.Action("CrearProyecto","Proyecto")">Nuevo proyecto</a>
+                        </div>
+                    </div>
                 </div>
+
 
             </div>
 

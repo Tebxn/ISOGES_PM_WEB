@@ -871,6 +871,8 @@
     <Content Include="Views\Requerimientos\CrearRequerimiento.cshtml" />
     <Content Include="Views\Requerimientos\EditarRequerimiento.cshtml" />
     <Content Include="Views\Proyecto\ConsultarProyectos.cshtml" />
+    <Content Include="Views\Proyecto\CrearProyecto.cshtml" />
+    <Content Include="Views\Proyecto\EditarProyecto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
