@@ -45,12 +45,13 @@ namespace project_management_for_ISOGES.Models
             }
         }
 
-        public int EliminarRequerimiento(long q)
+        public int InactivarRequerimiento(RequerimientoEnt entidad)
         {
             using (var client = new HttpClient())
             {
-                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/EliminarRequerimiento";
-                HttpResponseMessage resp = client.DeleteAsync(url).Result;
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/InactivarRequerimiento";
+                JsonContent body = JsonContent.Create(entidad); //Serializar
+                HttpResponseMessage resp = client.PutAsync(url, body).Result;
 
                 if (resp.IsSuccessStatusCode)
                 {
