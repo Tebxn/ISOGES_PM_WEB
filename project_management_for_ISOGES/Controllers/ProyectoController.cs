@@ -18,6 +18,23 @@ namespace project_management_for_ISOGES.Controllers
             return View(resp);
         }
 
+        [HttpGet]
+        public ActionResult CrearProyecto()
+        {
+            var respClientes = model.ConsultarClientes();
+            
+
+            var clientes = new List<SelectListItem>();
+            foreach (var item in respClientes)
+            {
+                clientes.Add(new SelectListItem { Value = item.IdCliente .ToString(), Text = item.Nombre.ToString() });
+            }
+
+
+            ViewBag.ComboClientes = clientes;
+
+            return View();
+        }
 
         [HttpPost]
         public ActionResult CrearProyecto(Entities.ProyectoEnt entidad)
@@ -27,6 +44,69 @@ namespace project_management_for_ISOGES.Controllers
 
             return RedirectToAction("ConsultarProyectos", "Proyecto");
         }
+
+        [HttpGet]
+        public ActionResult EditarProyectoClientes(long q)
+        {
+            var resp = model.ConsultarProyectoPorId(q);
+
+            var respClientes = model.ConsultarClientes();
+
+            var clientes = new List<SelectListItem>();
+
+            foreach (var item in respClientes)
+            {
+                clientes.Add(new SelectListItem { Value = item.IdCliente.ToString(), Text = item.Nombre.ToString() });
+            }
+
+
+            ViewBag.ComboClientes = clientes;
+
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult EditarProyecto(long q)
+        {
+            var resp = model.ConsultarProyectoPorId(q);
+
+            return View(resp);
+        }
+
+        [HttpPost]
+        public ActionResult EditarProyecto(Entities.ProyectoEnt entidad)
+        {
+            var resp = model.EditarProyecto(entidad);
+
+            
+
+            return RedirectToAction("ConsultarProyectos", "Proyecto");
+        }
+
+        [HttpGet]
+        public ActionResult InactivarProyecto(long q)
+        {
+            Entities.ProyectoEnt entidad = new Entities.ProyectoEnt();
+
+            entidad.IdProyecto = q;
+
+            var resp = model.InactivarProyecto(entidad);
+
+            if (resp > 0)
+            {
+                ViewBag.MsjPantalla = "Proyecto Inactivo";
+                return RedirectToAction("ConsultarProyectos", "Proyecto");
+            }
+            else
+            {
+                ViewBag.MsjPantalla = "No se ha podido Inactivar el estado del proyecto";
+                return View("ConsultarProyectos", "Proyecto");
+            }
+        }
+
+
+
 
     }
 }

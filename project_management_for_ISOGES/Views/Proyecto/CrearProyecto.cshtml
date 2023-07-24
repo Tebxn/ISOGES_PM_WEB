@@ -1,0 +1,59 @@
+﻿@model project_management_for_ISOGES.Entities.ProyectoEnt
+
+@{
+    ViewBag.Title = "CrearProyecto";
+}
+
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+    <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="d-flex align-items-center justify-content-center w-100">
+            <div class="row justify-content-center w-100">
+                <div class="col-md-10 col-lg-8 col-xxl-6">
+                    <div class="card mb-0">
+                        <div class="card-body">
+                            @using (Html.BeginForm("CrearProyecto", "Proyecto", FormMethod.Post))
+                            {
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="Nombre" class="form-label">Nombre</label>
+                                            @Html.TextBoxFor(m => m.NombreProyecto, new { @type = "text", @class = "form-control", @placeholder = "Nombre" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Apellido1" class="form-label">Descripción</label>
+                                            @Html.TextBoxFor(m => m.Descripcion, new { @type = "text", @class = "form-control", @placeholder = "Descripción" })
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="Apellido2" class="form-label">Monto Estimado</label>
+                                            @Html.TextBoxFor(m => m.MontoEstimado, new { @type = "number", @class = "form-control", @placeholder = "Monto Estimado", @step = "0.01" })
+                                        </div>
+                                    </div>
+                                 
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="Cliente" class="form-label">Cliente</label>
+                                            @Html.DropDownListFor(m => m.Cliente , ViewBag.ComboClientes as List<SelectListItem>, new
+                                            {
+                                                @class = "form-control",
+                                            @style = "background-color: white!important"
+                                            })
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-primary w-100 py-2 fs-4 rounded-2">Crear Proyecto</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

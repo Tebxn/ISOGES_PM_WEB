@@ -13,7 +13,6 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Identificación</th>
                                 <th>Nombre</th>
                                 <th>Apellido 1</th>
@@ -30,7 +29,6 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@item.IdUsuario</td>
                                     <td>@item.Identificacion</td>
                                     <td>@item.Nombre</td>
                                     <td>@item.Apellido1</td>
@@ -42,31 +40,32 @@
                                     <td>
                                         @if (item.Estado == true)
                                         {
-                                            <p>Activo</p>
+                                            <a class="btn btn-success">Activo</a>
                                         }
                                         else
                                         {
-                                            <p>Inactivo</p>
+                                            <a class="btn btn-danger">Inactivo</a>
                                         }
                                     </td>
                                     <td>
-                                        <a href="@Url.Action("EditarUsuario","Usuario", new { q = item.IdUsuario })" class="btn btn-light">Editar</a>
-                                        <a href="@Url.Action("InactivarUsuario","Usuario", new { q = item.IdUsuario })" class="btn btn-danger">Inactivar</a>
+                                        <a href="@Url.Action("EditarUsuario","Usuario", new { q = item.IdUsuario })" class="btn btn-outline-info">Editar</a>
+                                        <a href="@Url.Action("InactivarUsuario","Usuario", new { q = item.IdUsuario })" class="btn btn-outline-danger">Inactivar</a>
                                     </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-4">
+                            <a class="btn btn-success" href="@Url.Action("CrearUsuario","Usuario")">Agregar Usuario</a>
+                        </div>
+                        <div class="col-4">
                             <div style="text-align:center" class="alert alert-warning" role="alert">
                                 @ViewBag.MsjPantalla
                             </div>
                         </div>
-                        <div class="col-4">
-                            <a class="btn btn-success" href="@Url.Action("CrearUsuario","Usuario")">Agregar Usuario</a>
-                        </div>
-                        
+
+
                     </div>
                     
                 </div>

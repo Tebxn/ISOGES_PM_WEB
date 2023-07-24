@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace project_management_for_ISOGES.Controllers
 {
+    //Version estable 20/07/2023
     public class HomeController : Controller
     {
         public ActionResult Login()
