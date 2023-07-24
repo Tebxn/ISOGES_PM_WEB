@@ -873,10 +873,12 @@
     <Content Include="Views\Proyecto\ConsultarProyectos.cshtml" />
     <Content Include="Views\Proyecto\CrearProyecto.cshtml" />
     <Content Include="Views\Proyecto\EditarProyecto.cshtml" />
+    <Content Include="Views\Clientes\ConsultarClientes.cshtml" />
+    <Content Include="Views\Clientes\CrearCliente.cshtml" />
+    <Content Include="Views\Clientes\EditarCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cliente\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

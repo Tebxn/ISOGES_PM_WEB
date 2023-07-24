@@ -1,0 +1,56 @@
+﻿@model IEnumerable<project_management_for_ISOGES.Entities.ClienteEnt>
+
+@{
+    ViewBag.Title = "ConsultarClientes";
+}
+
+<div class="body-wrapper">
+
+    <!--  Row 1 -->
+    <div class="row">
+        <div class="col-12">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Identificacion</th>
+                        <th>Correo Electrónico</th>
+                        <th>Teléfono</th>
+                    </tr>
+                <thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.IdCliente</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.Identificacion</td>
+                            <td>@item.CorreoElectronico</td>
+                            <td>@item.Telefono</td>
+                            <td>
+                                <a href="@Url.Action("EditarCliente","Clientes", new { q = item.IdCliente })" class="btn btn-light">Editar</a>
+                                <a href="@Url.Action("EliminarCliente","Clientes", new { q = item.IdCliente })" class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-8">
+                    <div style="text-align:center" class="alert alert-warning" role="alert">
+                        @ViewBag.MsjPantalla
+                    </div>
+                </div>
+                <div class="col-4">
+                    <a class="btn btn-success" href="@Url.Action("CrearCliente","Clientes")">Agregar Cliente</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
