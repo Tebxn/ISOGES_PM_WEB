@@ -46,12 +46,14 @@ namespace project_management_for_ISOGES.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditarProyectoClientes()
+        public ActionResult EditarProyectoClientes(long q)
         {
+            var resp = model.ConsultarProyectoPorId(q);
+
             var respClientes = model.ConsultarClientes();
 
-
             var clientes = new List<SelectListItem>();
+
             foreach (var item in respClientes)
             {
                 clientes.Add(new SelectListItem { Value = item.IdCliente.ToString(), Text = item.Nombre.ToString() });
@@ -82,11 +84,6 @@ namespace project_management_for_ISOGES.Controllers
             return RedirectToAction("ConsultarProyectos", "Proyecto");
         }
 
-
-
-     
-
-     
 
     }
 }

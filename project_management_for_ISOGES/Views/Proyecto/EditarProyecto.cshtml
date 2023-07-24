@@ -35,13 +35,25 @@
                                         @Html.TextBoxFor(m => m.MontoEstimado, new { @type = "number", @class = "form-control", placeholder = "Monto Estimado" })
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="Estado" class="form-label">Estado</label>
-                                        @Html.TextBoxFor(m => m.Estado, new { @type = "text", @class = "form-control", placeholder = "Estado", @readonly = "readonly" })
+
+                                        @Html.TextBoxFor(m => m.Estado, new { @type = "hidden", @class = "form-control", placeholder = "Estado", @readonly = "readonly" })
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="Cliente" class="form-label">Cliente</label>
-                                        @Html.TextBoxFor(m => m.Cliente, new { @type = "text", @class = "form-control", placeholder = "Cliente"})
+                                        @Html.TextBoxFor(m => m.Cliente, new { @type = "text", @class = "form-control", placeholder = "Cliente" })
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="Cliente" class="form-label">Cliente</label>
+                                            @Html.DropDownListFor(m => m.NombreCliente, ViewBag.ComboClientes as List<SelectListItem>, new
+                                            {
+                                                @class = "form-control",
+                                            @style = "background-color: white!important"
+                                            })
+                                        </div>
+
                                     </div>
                                 </div>
 
