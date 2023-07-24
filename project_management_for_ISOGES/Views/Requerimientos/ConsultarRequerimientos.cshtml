@@ -17,6 +17,7 @@
                                 <th>Codigo</th>
                                 <th>Nombre</th>
                                 <th>Descripcion</th>
+                                <th>Estado</th>
                             </tr>
                         <thead>
                         <tbody>
@@ -28,8 +29,18 @@
                                     <td>@item.Nombre</td>
                                     <td>@item.Descripcion</td>
                                     <td>
+                                        @if (item.Estado == true)
+                                        {
+                                            <p>Activo</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Inactivo</p>
+                                        }
+                                    </td>
+                                    <td>
                                         <a href="@Url.Action("EditarRequerimiento","Requerimientos", new { q = item.IdRequerimiento })" class="btn btn-light">Editar</a>
-                                        <a href="@Url.Action("EliminarRequerimiento","Requerimientos", new { q = item.IdRequerimiento })" class="btn btn-danger">Eliminar</a>
+                                        <a href="@Url.Action("InactivarRequerimiento","Requerimientos", new { q = item.IdRequerimiento })" class="btn btn-danger">Cambiar Estado</a>
                                     </td>
                                 </tr>
                             }

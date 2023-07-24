@@ -34,22 +34,22 @@ namespace project_management_for_ISOGES.Controllers
             return RedirectToAction("ConsultarRequerimientos", "Requerimientos");
         }
 
-        [HttpDelete]
-        public ActionResult EliminarRequerimiento(long q)
+        [HttpGet]
+        public ActionResult InactivarRequerimiento(long q)
         {
             RequerimientoEnt entidad = new RequerimientoEnt();
             entidad.IdRequerimiento = q;
 
-            var resp = model.EliminarRequerimiento(q);
+            var resp = model.InactivarRequerimiento(entidad);
 
             if (resp > 0)
             {
-                ViewBag.MsjPantalla = "Requerimiento Eliminado";
+                ViewBag.MsjPantalla = "Estado Actualizado";
                 return RedirectToAction("ConsultarRequerimientos", "Requerimientos");
             }
             else
             {
-                ViewBag.MsjPantalla = "No se ha podido eliminar el requerimiento";
+                ViewBag.MsjPantalla = "No se ha podido inactivar el requerimiento";
                 return View("ConsultarRequerimientos", "Requerimientos");
             }
         }
