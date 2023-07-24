@@ -867,10 +867,10 @@
     <Content Include="Views\Shared\_Layout - Login.cshtml" />
     <Content Include="Views\Usuario\ConsultarUsuarios.cshtml" />
     <Content Include="Views\Usuario\EditarUsuario.cshtml" />
-    <Content Include="Views\Proyecto\ConsultarProyectos.cshtml" />
     <Content Include="Views\Requerimientos\ConsultarRequerimientos.cshtml" />
     <Content Include="Views\Requerimientos\CrearRequerimiento.cshtml" />
     <Content Include="Views\Requerimientos\EditarRequerimiento.cshtml" />
+    <Content Include="Views\Proyecto\ConsultarProyectos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

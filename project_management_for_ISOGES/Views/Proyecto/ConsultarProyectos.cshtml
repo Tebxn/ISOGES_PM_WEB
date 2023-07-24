@@ -1,7 +1,9 @@
-﻿
+﻿@model IEnumerable<project_management_for_ISOGES.Entities.ProyectoEnt>
+
 @{
     ViewBag.Title = "ConsultarProyectos";
 }
+
 
 <div class="body-wrapper">
 
@@ -12,49 +14,49 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>IdProyecto</th>
+                        <th>Id Proyecto</th>
                         <th>Nombre</th>
-                        <th>Descripcion</th>
                         <th>Cliente</th>
                         <th>Estado</th>
-                        <th>MontoEstimado</th>
+
                     </tr>
                 <thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>@item.IdProyecto</td>
-                            <td>@item.Nombre</td>
-                            <td>@item.Descripcion</td>
-                            <td>@item.Cliente</td>
-                            <td>@item.Estado</td>
-                            <td>@item.MontoEstimado</td>
-                            <td>
-                                @if (item.Estado == true)
-                                {
-                                    <p>Activo</p>
-                                }
-                                else
-                                {
-                                    <p>Inactivo</p>
-                                }
-                            </td>
-                            <td>
-                                
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>@item.IdProyecto</td>
+                        <td>@item.NombreProyecto</td>
+                        <td>@item.NombreCliente</td>
+
+                        <td>
+                            @if (item.Estado == true)
+                            {
+                                <p>Activo</p>
+                            }
+                            else
+                            {
+                                <p>Inactivo</p>
+                            }
+                        </td>
+                        <td>
+                        <td>
+                            <a href="@Url.Action("EditarUsuario","Usuario", new { q = item.IdProyecto })" class="btn btn-success">Editar</a>
+                            <a href="@Url.Action("InactivarUsuario","Usuario", new { q = item.IdProyecto })" class="btn btn-danger">Inactivar</a>
+                        </td>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
             <div class="row">
                 <div class="col-8">
-                    <div style="text-align:center" class="alert alert-warning" role="alert">
+                    <div style="text-align:center" class="" role="alert">
                         @ViewBag.MsjPantalla
                     </div>
                 </div>
                 <div class="col-4">
-                    <a class="btn btn-success" href="@Url.Action("CrearProyecto","Proyecto")">Agregar Proyecto</a>
+
                 </div>
 
             </div>
@@ -62,4 +64,3 @@
         </div>
     </div>
 </div>
-
