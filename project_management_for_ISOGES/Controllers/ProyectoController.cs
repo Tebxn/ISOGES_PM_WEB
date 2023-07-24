@@ -84,6 +84,29 @@ namespace project_management_for_ISOGES.Controllers
             return RedirectToAction("ConsultarProyectos", "Proyecto");
         }
 
+        [HttpGet]
+        public ActionResult InactivarProyecto(long q)
+        {
+            Entities.ProyectoEnt entidad = new Entities.ProyectoEnt();
+
+            entidad.IdProyecto = q;
+
+            var resp = model.InactivarProyecto(entidad);
+
+            if (resp > 0)
+            {
+                ViewBag.MsjPantalla = "Proyecto Inactivo";
+                return RedirectToAction("ConsultarProyectos", "Proyecto");
+            }
+            else
+            {
+                ViewBag.MsjPantalla = "No se ha podido Inactivar el estado del proyecto";
+                return View("ConsultarProyectos", "Proyecto");
+            }
+        }
+
+
+
 
     }
 }
