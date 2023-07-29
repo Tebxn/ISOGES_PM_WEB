@@ -20,9 +20,14 @@ namespace project_management_for_ISOGES.Controllers
             return View(resp);
         }
 
+        [HttpGet]
+        public ActionResult CrearCliente()
+        {
+            return View();
+        }
 
         [HttpPost]
-        public ActionResult CrearUsuario(Entities.ClienteEnt entidad)
+        public ActionResult CrearCliente(Entities.ClienteEnt entidad)
         {
             ClienteModel model = new ClienteModel();
             model.CrearCliente(entidad);
