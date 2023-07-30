@@ -27,12 +27,15 @@
                                         <label for="Contrasenna" class="form-label">Contraseña</label>
                                         @Html.TextBoxFor(m => m.Contrasena, new { @type = "password", @class = "form-control", @placeholder = "Contraseña" })
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                    </div>
+                                    @if (ViewBag.MsjPantalla != null)
+                                    {
+                                        <div class="alert alert-warning d-flex align-items-center justify-content-between mb-4">
+                                            @ViewBag.MsjPantalla
+                                        </div>
+                                    }
                                     <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Iniciar Sesión</button>
-                                    @*Para redirigir se usa: <a href="@Url.Action("Recuperar","Home")">Recuperar Contraseña</a> *@
-                                    <div class="d-flex align-items-center justify-content-center">
-                                    </div>
+                                    <a href="@Url.Action("OlvideMiContrasena","Home")">Olvide mi contraseña</a>
+
                                 </form>
 
                             </div>

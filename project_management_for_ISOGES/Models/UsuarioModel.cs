@@ -15,7 +15,7 @@ namespace project_management_for_ISOGES.Models
 {
     public class UsuarioModel
     {
-        public UsuarioEnt IniciarSesion(Entities.UsuarioEnt entidad) {
+        public UsuarioResponse IniciarSesion(Entities.UsuarioResponse entidad) {
 
             using (var client = new HttpClient())
             {
@@ -25,7 +25,7 @@ namespace project_management_for_ISOGES.Models
 
                 if (resp.IsSuccessStatusCode)
                 {
-                    return resp.Content.ReadFromJsonAsync<UsuarioEnt>().Result;
+                    return resp.Content.ReadFromJsonAsync<UsuarioResponse>().Result;
                 }
 
                 return null;
@@ -113,7 +113,7 @@ namespace project_management_for_ISOGES.Models
             }
         }
 
-        public UsuarioEnt ConsultarUsuarioPorId(long q)
+        public UsuarioResponse ConsultarUsuarioPorId(long q)
         {
             using (var client = new HttpClient())
             {
@@ -122,7 +122,7 @@ namespace project_management_for_ISOGES.Models
 
                 if (resp.IsSuccessStatusCode)
                 {
-                    return resp.Content.ReadFromJsonAsync<UsuarioEnt>().Result;
+                    return resp.Content.ReadFromJsonAsync<UsuarioResponse>().Result;
                 }
 
                 return null;
@@ -151,6 +151,23 @@ namespace project_management_for_ISOGES.Models
             using (var client = new HttpClient())
             {
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ActivarUsuario";
+                JsonContent body = JsonContent.Create(entidad); //Serializar
+                HttpResponseMessage resp = client.PutAsync(url, body).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<int>().Result;
+                }
+
+                return 0;
+            }
+        }
+
+        public int CambiarContrasena(UsuarioEnt entidad)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/CambiarContrasena";
                 JsonContent body = JsonContent.Create(entidad); //Serializar
                 HttpResponseMessage resp = client.PutAsync(url, body).Result;
 

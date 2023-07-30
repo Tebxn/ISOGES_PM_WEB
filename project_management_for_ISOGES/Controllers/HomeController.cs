@@ -21,18 +21,23 @@ namespace project_management_for_ISOGES.Controllers
         [HttpPost]
         public ActionResult IniciarSesion(UsuarioEnt entidad)
         {
-            var resp = model.IniciarSesion(entidad);
+            UsuarioResponse entidadEnviada = new UsuarioResponse();
+            entidadEnviada.ObjectSingle = entidad;
+            var resp = model.IniciarSesion(entidadEnviada);
 
-            if (resp != null)
+            if (resp.ObjectSingle.Estado)
             {
-                
-                Session["NombreUsuario"] = resp.Nombre;
-                Session["Apellido1"] = resp.Apellido1;
-                Session["NombreTipoUsuario"] = resp.NombreTipoUsuario;
+                Session["IdUsuario"] = resp.ObjectSingle.IdUsuario;
+                Session["CorreoElectronico"] = resp.ObjectSingle.CorreoElectronico;
+                Session["NombreUsuario"] = resp.ObjectSingle.Nombre;
+                Session["Apellido1"] = resp.ObjectSingle.Apellido1;
+                Session["NombreTipoUsuario"] = resp.ObjectSingle.NombreTipoUsuario;
+                Session["PassIsTemp"] = resp.ObjectSingle.PassIsTemp;
                 return RedirectToAction("Index");
             }
             else
             {
+                ViewBag.MsjPantalla = resp.ReturnMessage.ToString();
                 return View("Login");
             }
         }

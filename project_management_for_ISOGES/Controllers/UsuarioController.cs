@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using System.Security.Cryptography.X509Certificates;
 
 namespace project_management_for_ISOGES.Controllers
 {
@@ -105,7 +106,7 @@ namespace project_management_for_ISOGES.Controllers
         {
             var resp = model.EditarUsuario(entidad);
 
-            if (resp > 0) 
+            if (resp > 0)
             {
                 ViewBag.MsjPantalla = "Error al editar usuario";
                 return RedirectToAction("ConsultarUsuarios", "Usuario");
@@ -127,5 +128,47 @@ namespace project_management_for_ISOGES.Controllers
             ViewBag.MsjPantalla = "Usuario Reactivado con exito";
             return RedirectToAction("ConsultarUsuarios", "Usuario");
         }
+
+        [HttpGet]
+        public ActionResult CambiarContrasenaTemp() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CambiarContrasenaTemp(UsuarioEnt entidad)
+        {
+            entidad.CorreoElectronico = Session["CorreoElectronico"].ToString();
+            entidad.IdUsuario = long.Parse(Session["IdUsuario"].ToString());
+
+            UsuarioResponse entidadEnviada = new UsuarioResponse();
+            entidadEnviada.ObjectSingle = entidad;
+
+            var respValidarClave = model.IniciarSesion(entidadEnviada);
+
+            if (respValidarClave == null)
+            {
+                ViewBag.MsjPantalla = "Su contraseña temporal no coincide";
+                return View("CambiarContrasenaTemp");
+            }
+
+            if (entidad.NuevaContrasena != entidad.ConfirmarNuevaContrasena)
+            {
+                ViewBag.MsjPantalla = "Las contraseñas no coinciden";
+                return View("CambiarContrasenaTemp");
+            }
+
+            var respCambiarContrasenaTemp = model.CambiarContrasena(entidad);
+
+            if (respCambiarContrasenaTemp > 0)
+                return RedirectToAction("Login", "Home");
+            else
+            {
+                ViewBag.MsjPantalla = "Error al cambiar contraseña, consulte con soporte";
+                return View("CambiarContrasenaTemp");
+            }
+
+        }
+
     }
 }

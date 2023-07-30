@@ -1,4 +1,5 @@
-﻿using System;
+﻿using project_management_for_ISOGES.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,7 +19,16 @@ namespace project_management_for_ISOGES.Entities
         public bool Estado { get; set; }
         public string Contrasena { get; set; }
         public int Puesto { get; set; }
+        public bool PassIsTemp { get; set; }
         public string NombreTipoUsuario { get; set; }//tipo usuario
         public string NombrePuesto { get; set; }//puesto
+        public string NuevaContrasena { get; set; } //local
+        public string ConfirmarNuevaContrasena { get; set; } //local
+    }
+
+    public class UsuarioResponse : Response
+    {
+        public UsuarioEnt ObjectSingle { get; set; } = new UsuarioEnt();
+        public List<UsuarioEnt> ObjectList { get; set; } = new List<UsuarioEnt>();
     }
 }
