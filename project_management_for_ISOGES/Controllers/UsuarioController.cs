@@ -130,7 +130,7 @@ namespace project_management_for_ISOGES.Controllers
         }
 
         [HttpGet]
-        public ActionResult CambiarContrasenaTemp() 
+        public ActionResult CambiarContrasenaTemp()
         {
             return View();
         }
@@ -167,7 +167,26 @@ namespace project_management_for_ISOGES.Controllers
                 ViewBag.MsjPantalla = "Error al cambiar contraseña, consulte con soporte";
                 return View("CambiarContrasenaTemp");
             }
+        }
+        [HttpGet]
+        public ActionResult RestablecerContrasena()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult RestablecerContrasena(UsuarioEnt entidad)
+        {
+
+            var resp = model.RestablecerContrasena(entidad);
+
+            if (resp > 0)
+            {
+                ViewBag.MsjPantalla = "Contraseña restablecida con éxito. Revise su correo electronico y siga los pasos.";
+                return RedirectToAction("Login", "Home");
+            }
+            ViewBag.MsjPantalla = "No se ha podido restablecer su contraseña";
+            return RedirectToAction("RestablecerContrasena", "Usuario");
         }
 
     }

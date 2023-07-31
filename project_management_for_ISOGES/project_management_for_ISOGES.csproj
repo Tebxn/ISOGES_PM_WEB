@@ -877,6 +877,7 @@
     <Content Include="Views\Cliente\CrearCliente.cshtml" />
     <Content Include="Views\Cliente\EditarCliente.cshtml" />
     <Content Include="Views\Usuario\CambiarContrasenaTemp.cshtml" />
+    <Content Include="Views\Usuario\RestablecerContrasena.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
