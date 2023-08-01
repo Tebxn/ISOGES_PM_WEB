@@ -15,7 +15,7 @@ namespace project_management_for_ISOGES.Models
 {
     public class UsuarioModel
     {
-        public UsuarioResponse IniciarSesion(Entities.UsuarioResponse entidad) {
+        public UsuarioResponse IniciarSesion(UsuarioResponse entidad) {
 
             using (var client = new HttpClient())
             {

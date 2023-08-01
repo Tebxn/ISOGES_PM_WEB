@@ -1,0 +1,27 @@
+﻿@model IEnumerable<project_management_for_ISOGES.Entities.ProyectoEnt>
+
+@{
+    ViewBag.Title = "Cobros";
+}
+
+@foreach (var item in Model)
+{
+    <div class="container mt-5 col-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@item.NombreProyecto</h5>
+                <p class="card-text">@item.NombreCliente</p>
+                <p class="card-text">Fecha</p>
+                @if(item.Estado == true)
+                { 
+                    <p class="card-text">Activo</p>
+                }else
+                { 
+                    <p class="card-text">Concluido</p>
+                }
+                <p class="card-text"></p>
+                <a href="@Url.Action("ConsultarCobrosPorProyecto","Cobro", new { q = item.IdProyecto })" class="btn btn-primary">Ver cobros</a>
+            </div>
+        </div>
+    </div>
+}

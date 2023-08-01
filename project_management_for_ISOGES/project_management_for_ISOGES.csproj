@@ -152,6 +152,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\CobroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProyectoController.cs" />
     <Compile Include="Controllers\RequerimientosController.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Entities\ClienteEnt.cs" />
     <Compile Include="Entities\CobroEnt.cs" />
     <Compile Include="Entities\ProyectoEnt.cs" />
+    <Compile Include="Entities\Proyecto_Cobros.cs" />
     <Compile Include="Entities\PuestoEnt.cs" />
     <Compile Include="Entities\RequerimientoEnt.cs" />
     <Compile Include="Entities\TipoUsuarioEnt.cs" />
@@ -167,6 +169,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ClienteModel.cs" />
+    <Compile Include="Models\CobroModel.cs" />
     <Compile Include="Models\ProyectoModel.cs" />
     <Compile Include="Models\RequerimientoModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
@@ -878,6 +881,8 @@
     <Content Include="Views\Cliente\EditarCliente.cshtml" />
     <Content Include="Views\Usuario\CambiarContrasenaTemp.cshtml" />
     <Content Include="Views\Usuario\RestablecerContrasena.cshtml" />
+    <Content Include="Views\Cobro\CobrosMain.cshtml" />
+    <Content Include="Views\Cobro\ConsultarCobrosPorProyecto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
