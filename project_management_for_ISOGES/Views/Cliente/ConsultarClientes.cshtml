@@ -38,16 +38,19 @@
                 </tbody>
             </table>
             <div class="row">
-                <div class="col-8">
-                    <div style="text-align:center" class="alert alert-warning" role="alert">
-                        @ViewBag.MsjPantalla
+                @if (ViewBag.MsjPantalla != null)
+                {
+                    <div class="col-8">
+                        <div style="text-align:center" class="alert alert-warning" role="alert">
+                            @ViewBag.MsjPantalla
+                        </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <a class="btn btn-success" href="@Url.Action("CrearCliente","Cliente")">Agregar Cliente</a>
-                </div>
+                }
+                    <div class="col-4">
+                        <a class="btn btn-success" href="@Url.Action("CrearCliente","Cliente")">Agregar Cliente</a>
+                    </div>
 
-            </div>
+                </div>
 
         </div>
     </div>

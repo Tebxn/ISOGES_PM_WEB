@@ -113,7 +113,7 @@ namespace project_management_for_ISOGES.Models
             }
         }
 
-        public UsuarioResponse ConsultarUsuarioPorId(long q)
+        public UsuarioEnt ConsultarUsuarioPorId(long q)
         {
             using (var client = new HttpClient())
             {
@@ -122,7 +122,7 @@ namespace project_management_for_ISOGES.Models
 
                 if (resp.IsSuccessStatusCode)
                 {
-                    return resp.Content.ReadFromJsonAsync<UsuarioResponse>().Result;
+                    return resp.Content.ReadFromJsonAsync<UsuarioEnt>().Result;
                 }
 
                 return null;
