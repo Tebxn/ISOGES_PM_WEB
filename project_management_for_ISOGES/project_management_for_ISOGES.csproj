@@ -158,6 +158,7 @@
     <Compile Include="Controllers\ProyectoController.cs" />
     <Compile Include="Controllers\RequerimientosController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Entities\ChartEnt.cs" />
     <Compile Include="Entities\CorreoEnt.cs" />
     <Compile Include="Entities\ClienteEnt.cs" />
     <Compile Include="Entities\CobroEnt.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChartModel.cs" />
     <Compile Include="Models\CorreoModel.cs" />
     <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\CobroModel.cs" />
