@@ -18,22 +18,34 @@
                         <th>Identificacion</th>
                         <th>Correo Electrónico</th>
                         <th>Teléfono</th>
+                        <th>Estado</th>
                     </tr>
                 <thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>@item.IdCliente</td>
-                            <td>@item.Nombre</td>
-                            <td>@item.Identificacion</td>
-                            <td>@item.CorreoElectronico</td>
-                            <td>@item.Telefono</td>
-                            <td>
-                                <a href="@Url.Action("EditarCliente","Clientes", new { q = item.IdCliente })" class="btn btn-light">Editar</a>
-                                <a href="@Url.Action("EliminarCliente","Clientes", new { q = item.IdCliente })" class="btn btn-danger">Eliminar</a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>@item.IdCliente</td>
+                        <td>@item.Nombre</td>
+                        <td>@item.Identificacion</td>
+                        <td>@item.CorreoElectronico</td>
+                        <td>@item.Telefono</td>
+
+                        <td>
+                            @if (item.Estado == true)
+                            {
+                                <p>Activo</p>
+                            }
+                            else
+                            {
+                                <p>Inactivo</p>
+                            }
+                        </td>
+                        <td>
+                            <a href="@Url.Action("EditarCliente","Cliente", new { q = item.IdCliente })" class="btn btn-light">Editar</a>
+                            <a href="@Url.Action("EliminarCliente","Cliente", new { q = item.IdCliente })" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

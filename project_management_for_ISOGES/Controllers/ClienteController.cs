@@ -36,33 +36,43 @@ namespace project_management_for_ISOGES.Controllers
         }
 
         [HttpGet]
-        public ActionResult EliminarCliente(long id)
+        public ActionResult EliminarCliente(long q)
         {
-            ClienteEnt entidad = new ClienteEnt();
-            entidad.IdCliente = id;
+            Entities.ClienteEnt entidad = new Entities.ClienteEnt();
 
-            var resp = model.EliminarClientePorId(entidad);
+            entidad.IdCliente = q;
+
+            var resp = model.EliminarCliente(entidad);
 
             if (resp > 0)
             {
-                ViewBag.MsjPantalla = "Cliente Eliminado";
+                ViewBag.MsjPantalla = "Cliente Inactivado";
                 return RedirectToAction("ConsultarClientes", "Cliente");
             }
             else
             {
-                ViewBag.MsjPantalla = "No se ha podido eliminar el cliente deseado";
+                ViewBag.MsjPantalla = "No se ha podido Inactivar el estado del cliente";
                 return View("ConsultarClientes", "Cliente");
             }
         }
 
-        //FALTA EN EL API METODO EDITAR CLIENTE :(
-
         [HttpGet]
-        public ActionResult EditarUsuario(long q)
+        public ActionResult EditarCliente(long q)
         {
-            var resp = model.ConsultaClientePorId(q);
+            var resp = model.ConsultarClientePorId(q);
 
             return View(resp);
         }
+
+        [HttpPost]
+        public ActionResult EditarCliente(Entities.ClienteEnt entidad)
+        {
+            var resp = model.EditarCliente(entidad);
+
+
+
+            return RedirectToAction("ConsultarClientes", "Cliente");
+        }
+
     }
 }

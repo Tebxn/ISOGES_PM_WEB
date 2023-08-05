@@ -13,11 +13,11 @@
                 <div class="col-md-10 col-lg-8 col-xxl-6">
                     <div class="card mb-0">
                         <div class="card-body">
-                            @using (Html.BeginForm("EditarCliente", "Clientes", FormMethod.Post))
+                            @using (Html.BeginForm("EditarCliente", "Cliente", FormMethod.Post))
                             {
                                 <form>
                                     <div>
-                                        @Html.TextBoxFor(m => m.IdCliente, new { @type = "hidden", @class = "form-control", @placeholder = "IdCliente" })
+                                        @Html.TextBoxFor(m => m.IdCliente, new { @type = "hidden", @class = "form-control", @placeholder = "IdCliente", @readonly = "readonly" })
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-md-6">
@@ -44,13 +44,13 @@
                                     <div class="row mb-3">
                                         <div class="col-md-6">
                                             <label for="Telefono" class="form-label">Telefono</label>
-                                            @Html.TextBoxFor(m => m.Telefono, new { @type = "text", @class = "form-control", placeholder = "telefono" })
+                                            @Html.TextBoxFor(m => m.Telefono, new { @type = "text", @class = "form-control", placeholder = "Telefono" })
                                         </div>
                                     </div>
 
                                     <div class="row justify-content-center">
                                         <div class="col-6">
-                                            <button type="submit" class="btn btn-success w-100 py-2 fs-4 rounded-2">Actualizar Requerimiento</button>
+                                            <button type="submit" class="btn btn-success w-100 py-2 fs-4 rounded-2">Actualizar Cliente</button>
                                         </div>
                                     </div>
                                 </form>

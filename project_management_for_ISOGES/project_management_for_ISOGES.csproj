@@ -153,10 +153,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CobroController.cs" />
+    <Compile Include="Controllers\CorreoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProyectoController.cs" />
     <Compile Include="Controllers\RequerimientosController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Entities\CorreoEnt.cs" />
     <Compile Include="Entities\ClienteEnt.cs" />
     <Compile Include="Entities\CobroEnt.cs" />
     <Compile Include="Entities\ProyectoEnt.cs" />
@@ -168,6 +170,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CorreoModel.cs" />
     <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\CobroModel.cs" />
     <Compile Include="Models\ProyectoModel.cs" />
@@ -853,6 +856,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Correo\EnviarCorreo.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

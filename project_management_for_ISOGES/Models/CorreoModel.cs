@@ -9,13 +9,14 @@ using System.Web;
 
 namespace project_management_for_ISOGES.Models
 {
-    public class ClienteModel
+    public class CorreoModel
     {
-        public int CrearCliente(ClienteEnt entidad)
+
+        public int CrearCorreo(CorreoEnt entidad)
         {
             using (var client = new HttpClient())
             {
-                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/CrearCliente";
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/CrearCorreo";
                 JsonContent body = JsonContent.Create(entidad); //Serializar
                 HttpResponseMessage resp = client.PostAsync(url, body).Result;
 
@@ -44,11 +45,27 @@ namespace project_management_for_ISOGES.Models
             }
         }
 
-        public int EliminarCliente(ClienteEnt entidad)
+        public List<CorreoEnt> ConsultarCorreos()
         {
             using (var client = new HttpClient())
             {
-                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/EliminarCliente";
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarCorreos";
+                HttpResponseMessage resp = client.GetAsync(url).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<List<CorreoEnt>>().Result;
+                }
+
+                return new List<CorreoEnt>();
+            }
+        }
+
+        public int EliminarCorreo(CorreoEnt entidad)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/EliminarCorreo";
                 JsonContent body = JsonContent.Create(entidad); //Serializar
                 HttpResponseMessage resp = client.PutAsync(url, body).Result;
 
@@ -60,40 +77,5 @@ namespace project_management_for_ISOGES.Models
                 return 0;
             }
         }
-
-        public ClienteEnt ConsultarClientePorId(long q)
-        {
-            using (var client = new HttpClient())
-            {
-                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarCliente?q=" + q;
-                HttpResponseMessage resp = client.GetAsync(url).Result;
-
-                if (resp.IsSuccessStatusCode)
-                {
-                    return resp.Content.ReadFromJsonAsync<ClienteEnt>().Result;
-                }
-
-                return null;
-            }
-        }
-
-        public int EditarCliente(ClienteEnt entidad)
-        {
-            using (var proyecto = new HttpClient())
-            {
-                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/EditarCliente";
-                JsonContent body = JsonContent.Create(entidad); //Serializar
-                HttpResponseMessage resp = proyecto.PutAsync(url, body).Result;
-
-                if (resp.IsSuccessStatusCode)
-                {
-                    return resp.Content.ReadFromJsonAsync<int>().Result;
-                }
-
-                return 0;
-            }
-        }
-
-        
     }
 }
