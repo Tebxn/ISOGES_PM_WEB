@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 
 namespace project_management_for_ISOGES.Models
-    {
+{
         public class ChartModel
         {
             public List<ChartAnualIngresoEnt> CargarChartAnualIngreso()
@@ -24,6 +24,4 @@ namespace project_management_for_ISOGES.Models
                 }
             }
         }
-    }
-}
 }

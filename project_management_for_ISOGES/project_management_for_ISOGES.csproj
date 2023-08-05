@@ -163,7 +163,7 @@
     <Compile Include="Entities\ClienteEnt.cs" />
     <Compile Include="Entities\CobroEnt.cs" />
     <Compile Include="Entities\ProyectoEnt.cs" />
-    <Compile Include="Entities\Proyecto_Cobros.cs" />
+    <Compile Include="Entities\Proyectos_CobrosEnt.cs" />
     <Compile Include="Entities\PuestoEnt.cs" />
     <Compile Include="Entities\RequerimientoEnt.cs" />
     <Compile Include="Entities\TipoUsuarioEnt.cs" />
