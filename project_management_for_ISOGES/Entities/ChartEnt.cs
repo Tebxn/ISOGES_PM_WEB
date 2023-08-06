@@ -16,4 +16,10 @@ namespace project_management_for_ISOGES.Entities
         public string DiaMes { get; set; }
         public double IngresosTotales { get; set; }
     }
+
+    public class ChartMensualIngreso
+    { 
+        public string Mes { get; set; }
+        public double MesTotalIngreso { get; set; }
+    }
 }

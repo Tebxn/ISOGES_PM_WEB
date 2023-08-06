@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                             <div class="mb-3 mb-sm-0">
-                                <h5 class="card-title fw-semibold">Nuevos proyectos mensuales</h5>
+                                <h5 class="card-title fw-semibold">Nuevos proyectos @ViewBag.AnioActual</h5>
                             </div>
                         </div>
                         <div id="chartProyectosNuevos"></div>
@@ -28,7 +28,7 @@
                                 <h5 class="card-title mb-9 fw-semibold">Ingresos Anuales @ViewBag.AnioActual</h5>
                                 <div class="row">
                                     <div class="col-12">
-                                        <h4 class="fw-semibold mb-3">¢@ViewBag.TotalIngresosAnioActual</h4>
+                                        <h4 class="fw-semibold mb-3">@ViewBag.TotalIngresosAnioActual</h4>
                                         <div class="col-12">
                                             <div id="chartMensual"></div>
                                         </div>
@@ -44,7 +44,7 @@
                                     <div class="row alig n-items-start">
                                         <div class="col-8">
                                             <h5 class="card-title mb-9 fw-semibold"> Historico de Ingresos </h5>
-                                            <h4 class="fw-semibold mb-3">¢@ViewBag.TotalIngresosHistorico</h4>
+                                            <h4 class="fw-semibold mb-3">@ViewBag.TotalIngresosHistorico</h4>
                                             <div class="d-flex align-items-center pb-1">
                                             </div>
                                         </div>
@@ -93,7 +93,7 @@
         },
         series: [{
             name: 'Datos Mensuales',
-            data: [30, 40, 25, 50, 49, 21, 70, 51, 42, 29, 60, 48], // Reemplaza estos datos con tus datos mensuales
+            data: @Html.Raw(Json.Encode(ViewBag.ListaIngresosPorMes)), // Reemplaza estos datos con tus datos mensuales
         }],
         xaxis: {
             categories: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
