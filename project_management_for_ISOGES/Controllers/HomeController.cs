@@ -18,6 +18,7 @@ namespace project_management_for_ISOGES.Controllers
 
         UsuarioModel model = new UsuarioModel();
         ChartModel modelChart = new ChartModel();
+        UtilitiesModel util = new UtilitiesModel();
 
         [HttpPost]
         public ActionResult IniciarSesion(UsuarioEnt entidad)
@@ -65,15 +66,6 @@ namespace project_management_for_ISOGES.Controllers
                     aniosIndividuales.Add(item);
                 }
             }
-            //Separar meses
-            List<string> mesesIndividuales = new List<string>();
-            foreach (var item in mes)
-            {
-                if (!mesesIndividuales.Contains(item))
-                {
-                    mesesIndividuales.Add(item);
-                }
-            }
                 //SepararMontosPorAnio
                 List<double> montosPorAnio = new List<double>();
                 foreach (var item in aniosIndividuales)
@@ -87,13 +79,23 @@ namespace project_management_for_ISOGES.Controllers
                     }
                     montosPorAnio.Add(montoPorAnio);
                 }
-                double totalIngresos = montosPorAnio.Sum();
 
-                ViewBag.Anios = aniosIndividuales;
-                ViewBag.Meses = mes;
-                ViewBag.DiaMes = diaMes;
-                ViewBag.TotalIngresos = totalIngresos;
-                ViewBag.MontosPorAnio = montosPorAnio;
+            double totalIngresosHistorico = montosPorAnio.Sum();
+            string anioActual = util.ConseguirAnioActual();
+            var respTotalIngresosAnioActual = respChartAnual.Where(p => p.Anio.Equals(anioActual));
+            double totalIngresosAnioActual = 0;
+            foreach (var item in respTotalIngresosAnioActual)
+            {
+                totalIngresosAnioActual += item.IngresosTotales; 
+            }
+
+            ViewBag.Anios = aniosIndividuales;
+            ViewBag.Meses = mes;
+            ViewBag.DiaMes = diaMes;
+            ViewBag.TotalIngresosHistorico = totalIngresosHistorico;
+            ViewBag.TotalIngresosAnioActual = totalIngresosAnioActual;
+            ViewBag.MontosPorAnio = montosPorAnio;
+            ViewBag.AnioActual = anioActual;
 
                 return View();
             }
