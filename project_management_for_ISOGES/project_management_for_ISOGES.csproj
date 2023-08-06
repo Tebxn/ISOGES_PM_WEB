@@ -178,7 +178,8 @@
     <Compile Include="Models\ProyectoModel.cs" />
     <Compile Include="Models\RequerimientoModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
-    <Compile Include="Models\Utilities.cs" />
+    <Compile Include="Entities\Utilities.cs" />
+    <Compile Include="Models\UtilitiesModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,7 +197,6 @@
     <Content Include="assets\images\products\s7.jpg" />
     <Content Include="assets\images\profile\user-1.jpg" />
     <Content Include="assets\js\app.min.js" />
-    <Content Include="assets\js\dashboard.js" />
     <Content Include="assets\js\sidebarmenu.js" />
     <Content Include="assets\libs\apexcharts\dist\apexcharts.amd.js" />
     <Content Include="assets\libs\apexcharts\dist\apexcharts.common.js" />
