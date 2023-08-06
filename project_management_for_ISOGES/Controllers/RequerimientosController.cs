@@ -63,11 +63,35 @@ namespace project_management_for_ISOGES.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditarRequerimiento(RequerimientoEnt entidad)
+        public ActionResult EditarRequerimiento(RequerimientoEnt entidad, HttpPostedFileBase file)
         {
-            var resp = model.EditarRequerimiento(entidad);
+            string extension = System.IO.Path.GetExtension(System.IO.Path.GetFileName(file.FileName));
+            int tamanno = file.ContentLength;
+            string nombreArchivo = System.IO.Path.GetFileName(file.FileName);
 
-            return RedirectToAction("ConsultarRequerimientos", "Requerimientos");
+            if (extension == ".pdf" && tamanno <= 1048576)
+            {
+                string ruta = @"C:\Users\Saul Hernandez\source\repos\ISOGES_PM_WEB\project_management_for_ISOGES\PDFs\" + nombreArchivo;
+                file.SaveAs(ruta);
+                entidad.URL = @"\PDFs\" + nombreArchivo;
+
+                var resp = model.EditarRequerimiento(entidad);
+                return RedirectToAction("ConsultarRequerimientos", "Requerimientos");
+            }
+            else
+            {
+                if (extension != ".pdf")
+                {
+                    ViewBag.MsjPantalla = "No se aceptan archivos diferentes a PDF";
+                    return View();
+                } 
+                else
+                {
+                    ViewBag.MsjPantalla = "Archivo muy grande";
+                    return View();
+                }
+            }
+
         }
     }
 }

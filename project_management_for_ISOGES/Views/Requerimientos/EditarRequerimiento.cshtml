@@ -13,7 +13,7 @@
                 <div class="col-md-10 col-lg-8 col-xxl-6">
                     <div class="card mb-0">
                         <div class="card-body">
-                            @using (Html.BeginForm("EditarRequerimiento", "Requerimientos", FormMethod.Post))
+                            @using (Html.BeginForm("EditarRequerimiento", "Requerimientos", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
                                 <form>
                                     <div>
@@ -21,18 +21,25 @@
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-md-6">
-                                            <label for="Nombre" class="form-label">Codigo</label>
+                                            <label for="Codigo" class="form-label">Codigo</label>
                                             @Html.TextBoxFor(m => m.Codigo, new { @type = "text", @class = "form-control", @placeholder = "Codigo" })
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="Apellido1" class="form-label">Nombre</label>
+                                            <label for="Nombre" class="form-label">Nombre</label>
                                             @Html.TextBoxFor(m => m.Nombre, new { @type = "text", @class = "form-control", placeholder = "Nombre" })
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-md-6">
-                                            <label for="Apellido2" class="form-label">Descripcion</label>
+                                            <label for="Descripcion" class="form-label">Descripcion</label>
                                             @Html.TextBoxFor(m => m.Descripcion, new { @type = "text", @class = "form-control", placeholder = "Descripcion" })
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="file" class="form-label">Archivo PDF</label>
+                                            @Html.TextBoxFor(m => m.URL, new { @type = "text", @class = "form-control", placeholder = "No Archivo PDF agregado", @readonly = "readonly" })
+                                            <input type="file" name="file" class="form-control-file" accept="application/pdf">
                                         </div>
                                     </div>
 
@@ -44,10 +51,16 @@
                                 </form>
                             }
                         </div>
+                        @if (ViewBag.MsjPantalla != null)
+                        {
+                            <div class="alert alert-warning d-flex align-items-center justify-content-between mb-4">
+                                @ViewBag.MsjPantalla
+                            </div>
+                        }
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 

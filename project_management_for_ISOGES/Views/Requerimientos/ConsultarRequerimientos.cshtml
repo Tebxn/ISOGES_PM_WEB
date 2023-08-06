@@ -17,6 +17,7 @@
                                 <th>Codigo</th>
                                 <th>Nombre</th>
                                 <th>Descripcion</th>
+                                <th>PDF</th>
                                 <th>Estado</th>
                             </tr>
                         <thead>
@@ -28,6 +29,18 @@
                                     <td>@item.Codigo</td>
                                     <td>@item.Nombre</td>
                                     <td>@item.Descripcion</td>
+                                    <td>
+                                        @if (item.URL != null)
+                                        {
+                                            <a href="@Url.Content("~/" + item.URL)" target="_blank">
+                                                <i class="far fa-file-pdf"></i> Ver PDF
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <p>No hay documento agregado</p>
+                                        }
+                                    </td>
                                     <td>
                                         @if (item.Estado == true)
                                         {
@@ -55,12 +68,12 @@
                                 </div>
                             </div>
                         }
-                            <div class="col-4">
-                                <a class="btn btn-success" href="@Url.Action("CrearRequerimiento","Requerimientos")">Agregar Requerimiento</a>
-                            </div>
-
+                        <div class="col-4">
+                            <a class="btn btn-success" href="@Url.Action("CrearRequerimiento","Requerimientos")">Agregar Requerimiento</a>
                         </div>
-                    
+
+                    </div>
+
                 </div>
             </div>
         </div>
