@@ -45,13 +45,14 @@ namespace project_management_for_ISOGES.Controllers
             return RedirectToAction("ConsultarProyectos", "Proyecto");
         }
 
+       
+
+
         [HttpGet]
-        public ActionResult EditarProyectoClientes(long q)
+        public ActionResult EditarProyecto(long q)
         {
             var resp = model.ConsultarProyectoPorId(q);
-
             var respClientes = model.ConsultarClientes();
-
             var clientes = new List<SelectListItem>();
 
             foreach (var item in respClientes)
@@ -59,17 +60,7 @@ namespace project_management_for_ISOGES.Controllers
                 clientes.Add(new SelectListItem { Value = item.IdCliente.ToString(), Text = item.Nombre.ToString() });
             }
 
-
             ViewBag.ComboClientes = clientes;
-
-            return View();
-        }
-
-
-        [HttpGet]
-        public ActionResult EditarProyecto(long q)
-        {
-            var resp = model.ConsultarProyectoPorId(q);
 
             return View(resp);
         }

@@ -36,25 +36,33 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="Estado" class="form-label">Estado</label>
-                                        @Html.TextBoxFor(m => m.Estado, new { @type = "text", @class = "form-control", placeholder = "Estado", @readonly = "readonly", @id = "estadoTextBox" })
+                                        @Html.TextBoxFor(m => m.Estado, new { @type = "text", @class = "form-control", placeholder = "Estado", @id = "Estado" })
                                         <script>
                                             document.addEventListener("DOMContentLoaded", function () {
-                                                var estadoTextBox = document.getElementById("estadoTextBox");
-                                                if (estadoTextBox.value === "True") {
+                                                var estadoTextBox = document.getElementById("Estado");
+                                                if (estadoTextBox.value == "True") {
                                                     estadoTextBox.value = "Activo";
                                                 } else {
                                                     estadoTextBox.value = "Inactivo";
                                                 }
                                             });
                                         </script>
-                                    </div>
 
-                                    <div class="col-md-6">
-                                        <label for="Cliente" class="form-label">Cliente</label>
-                                        @Html.TextBoxFor(m => m.Cliente, new { @type = "text", @class = "form-control", placeholder = "Cliente" })
+
                                     </div>
 
 
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="Cliente" class="form-label">Cliente</label>
+                                            @Html.DropDownListFor(m => m.Cliente, ViewBag.ComboClientes as List<SelectListItem>, new
+                                            {
+                                                @class = "form-control",
+                                            @style = "background-color: white!important"
+                                            })
+                                        </div>
+
+                                    </div>
                                 </div>
 
                            
