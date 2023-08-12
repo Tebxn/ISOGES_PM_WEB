@@ -15,6 +15,8 @@ namespace project_management_for_ISOGES.Entities
         public string NombreCliente { get; set; }
         public bool Estado { get; set; }
         public double MontoEstimado { get; set; }
+        public long EstadoGeneral { get; set; }
+        public String NombreEstado { get; set; }
 
     }
 

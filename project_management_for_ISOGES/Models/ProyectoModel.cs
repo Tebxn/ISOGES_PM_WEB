@@ -60,6 +60,22 @@ namespace project_management_for_ISOGES.Models
             }
         }
 
+        public List<Estado_ProyectoEnt> ConsultarEstadosProyecto()
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarEstadosProyecto";
+                HttpResponseMessage resp = client.GetAsync(url).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<List<Estado_ProyectoEnt>>().Result;
+                }
+
+                return new List<Estado_ProyectoEnt>();
+            }
+        }
+
         public ProyectoEnt ConsultarProyectoPorId(long q)
         {
             using (var client = new HttpClient())

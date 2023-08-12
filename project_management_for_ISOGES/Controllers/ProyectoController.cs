@@ -22,16 +22,22 @@ namespace project_management_for_ISOGES.Controllers
         public ActionResult CrearProyecto()
         {
             var respClientes = model.ConsultarClientes();
-            
+            var respEstados = model.ConsultarEstadosProyecto();
 
             var clientes = new List<SelectListItem>();
+            var estados = new List<SelectListItem>();
+
             foreach (var item in respClientes)
             {
                 clientes.Add(new SelectListItem { Value = item.IdCliente .ToString(), Text = item.Nombre.ToString() });
             }
 
-
+            foreach (var item in respEstados)
+            {
+                estados.Add(new SelectListItem { Value = item.IdEstadoProyecto.ToString(), Text = item.NombreEstado.ToString() });
+            }
             ViewBag.ComboClientes = clientes;
+            ViewBag.ComboEstados = estados;
 
             return View();
         }
@@ -53,14 +59,23 @@ namespace project_management_for_ISOGES.Controllers
         {
             var resp = model.ConsultarProyectoPorId(q);
             var respClientes = model.ConsultarClientes();
+            var respEstados = model.ConsultarEstadosProyecto();
+
             var clientes = new List<SelectListItem>();
+            var estados = new List<SelectListItem>();
 
             foreach (var item in respClientes)
             {
                 clientes.Add(new SelectListItem { Value = item.IdCliente.ToString(), Text = item.Nombre.ToString() });
             }
 
+            foreach (var item in respEstados)
+            {
+                estados.Add(new SelectListItem { Value = item.IdEstadoProyecto.ToString(), Text = item.NombreEstado.ToString() });
+            }
+
             ViewBag.ComboClientes = clientes;
+            ViewBag.ComboEstados = estados;
 
             return View(resp);
         }
