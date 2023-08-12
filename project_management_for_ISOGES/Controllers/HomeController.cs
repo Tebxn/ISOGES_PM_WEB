@@ -3,6 +3,7 @@ using project_management_for_ISOGES.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 
@@ -47,65 +48,39 @@ namespace project_management_for_ISOGES.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var respChartAnual = modelChart.CargarChartAnualIngreso();
-            List<string> anios = new List<string>();
-            List<string> mes = new List<string>();
-            List<string> diaMes = new List<string>();
-            foreach (var item in respChartAnual)
-            {
-                anios.Add(item.Anio.ToString());
-                mes.Add(item.Mes.ToString());
-                diaMes.Add(item.DiaMes.ToString());
-            }
-            //Separar anios
-            List<string> aniosIndividuales = new List<string>();
-            foreach (var item in anios)
-            {
-                if (!aniosIndividuales.Contains(item))
-                {
-                    aniosIndividuales.Add(item);
-                }
-            }
-                //SepararMontosPorAnio
-                List<double> montosPorAnio = new List<double>();
-                foreach (var item in aniosIndividuales)
-                {
-                    var datos = respChartAnual.Where(p => p.Anio.Equals(item));
-                    double montoPorAnio = 0;
+            string anioActual = util.ConseguirAnioActual();
 
-                    foreach (var x in datos)
-                    {
-                        montoPorAnio += x.IngresosTotales;
-                    }
-                    montosPorAnio.Add(montoPorAnio);
-                }
+            List<string> listaAnios = new List<string>();
+            listaAnios = modelChart.ConseguirListaAnios();
+
+            double totalIngresosAnioActual = modelChart.ConseguirTotalIngresosAnioActual();
+            string totalIngresosAnioFormat = totalIngresosAnioActual.ToString("₡0,0.00");
+
+            List<double> listaIngresosPorMes = new List<double>();
+            listaIngresosPorMes = modelChart.ListarIngresosMensuales(anioActual);
+
+            List<double> montosPorAnio = new List<double>();
+            montosPorAnio = modelChart.CargarListaMontosPorAnio();
 
             double totalIngresosHistorico = montosPorAnio.Sum();
-            string anioActual = util.ConseguirAnioActual();
-            var respTotalIngresosAnioActual = respChartAnual.Where(p => p.Anio.Equals(anioActual));
-            double totalIngresosAnioActual = 0;
-            foreach (var item in respTotalIngresosAnioActual)
-            {
-                totalIngresosAnioActual += item.IngresosTotales; 
-            }
+            string totalHistoricoFormat = totalIngresosHistorico.ToString("₡0,0.00");
 
-            ViewBag.Anios = aniosIndividuales;
-            ViewBag.Meses = mes;
-            ViewBag.DiaMes = diaMes;
-            ViewBag.TotalIngresosHistorico = totalIngresosHistorico;
-            ViewBag.TotalIngresosAnioActual = totalIngresosAnioActual;
+            ViewBag.Anios = listaAnios;
+            ViewBag.TotalIngresosHistorico = totalHistoricoFormat;
+            ViewBag.TotalIngresosAnioActual = totalIngresosAnioFormat;
             ViewBag.MontosPorAnio = montosPorAnio;
             ViewBag.AnioActual = anioActual;
+            ViewBag.ListaIngresosPorMes = listaIngresosPorMes;
 
-                return View();
-            }
-
-            [HttpGet]
-            public ActionResult CerrarSesion()
-            {
-                Session.Clear();
-                return RedirectToAction("Login", "Home");
-            }
-
+            return View();
         }
+
+        [HttpGet]
+        public ActionResult CerrarSesion()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Home");
+        }
+
     }
+}

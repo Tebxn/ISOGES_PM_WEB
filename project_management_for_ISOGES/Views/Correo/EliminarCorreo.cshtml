@@ -1,8 +1,9 @@
 ﻿@model project_management_for_ISOGES.Entities.CorreoEnt
-
 @{
-    ViewBag.Title = "EnviarCorreo";
+    ViewBag.Title = "EliminarCorreo";
 }
+
+<h2>EditarUsuario</h2>
 
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
      data-sidebar-position="fixed" data-header-position="fixed">
@@ -12,40 +13,31 @@
                 <div class="col-md-10 col-lg-8 col-xxl-6">
                     <div class="card mb-0">
                         <div class="card-body">
-                            @using (Html.BeginForm("EnviarCorreo", "Correo", FormMethod.Post))
+                            @using (Html.BeginForm("EliminarCorreo", "Correo", FormMethod.Post))
                             {
                                 <form>
+                                    <div>
+                                        @Html.TextBoxFor(m => m.IdCorreo, new { @type = "hidden", @class = "form-control", @placeholder = "IdCorreo", @readonly = "readonly" })
+                                    </div>
                                     <div class="row mb-3">
                                         <div class="col-md-6">
-                                            <label for="Asunto" class="form-label">Asunto</label>
+                                            <label for="Nombre" class="form-label">Id</label>
                                             @Html.TextBoxFor(m => m.Asunto, new { @type = "text", @class = "form-control", @placeholder = "Asunto" })
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="Cuerpo" class="form-label">Cuerpo</label>
-                                            @Html.TextBoxFor(m => m.Cuerpo, new { @type = "text", @class = "form-control", @placeholder = "Cuerpo" })
+                                            <label for="Nombre" class="form-label">Nombre</label>
+                                            @Html.TextBoxFor(m => m.Cuerpo, new { @type = "text", @class = "form-control", placeholder = "Cuerpo" })
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-md-6">
-                                            <label for="Remitente" class="form-label">Remitente</label>
-                                            @Html.TextBoxFor(m => m.Remitente, new { @type = "number", @class = "form-control", @placeholder = "Remitente"})
+                                            <label for="Identificacion" class="form-label">Identificacion</label>
+                                            @Html.TextBoxFor(m => m.Remitente, new { @type = "text", @class = "form-control", placeholder = "Remitente" })
                                         </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="Destinatario" class="form-label">Destinatario</label>
-                                            @Html.DropDownListFor(m => m.ClienteCorreo, ViewBag.ComboClientes as List<SelectListItem>, new
-                                            {
-                                                @class = "form-control",
-                                            @style = "background-color: white!important"
-                                            })
-                                        </div>
-
                                     </div>
                                     <div class="row justify-content-center">
                                         <div class="col-6">
-                                            <button type="submit" class="btn btn-primary w-100 py-2 fs-4 rounded-2">Enviar Correo</button>
+                                            <button type="submit" class="btn btn-success w-100 py-2 fs-4 rounded-2">Eliminar Correo</button>
                                         </div>
                                     </div>
                                 </form>
@@ -57,4 +49,6 @@
         </div>
     </div>
 </div>
+
+
 

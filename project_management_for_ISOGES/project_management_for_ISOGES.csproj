@@ -859,7 +859,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\Correo\EnviarCorreo.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -890,9 +889,13 @@
     <Content Include="Views\Usuario\RestablecerContrasena.cshtml" />
     <Content Include="Views\Cobro\CobrosMain.cshtml" />
     <Content Include="Views\Cobro\ConsultarCobrosPorProyecto.cshtml" />
+    <Content Include="Views\Correo\ConsultarCorreos.cshtml" />
+    <Content Include="Views\Correo\EliminarCorreo.cshtml" />
+    <Content Include="Views\Correo\CrearCorreo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ArchivosPDF\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
