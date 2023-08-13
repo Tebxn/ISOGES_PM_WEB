@@ -14,6 +14,9 @@
                             </div>
                         </div>
                         <div id="chartProyectosNuevos"></div>
+                        <br>
+                        <h5 class="card-title fw-semibold">Empleados por proyecto activos</h5>
+                        <div id="chartEmpleadosPorProyecto"></div>
                     </div>
                 </div>
             </div>
@@ -94,6 +97,7 @@
         series: [{
             name: 'Datos Mensuales',
             data: @Html.Raw(Json.Encode(ViewBag.ListaIngresosPorMes)), // Reemplaza estos datos con tus datos mensuales
+            data: @Html.Raw(Json.Encode(ViewBag.ListaIngresosPorMes)),
         }],
         xaxis: {
             categories: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
@@ -112,6 +116,7 @@
         series: [{
             name: 'Datos Mensuales',
             data: [30, 40, 25, 50, 49, 21, 70, 51, 42, 29, 60, 48], // Reemplaza estos datos con tus datos mensuales
+            data: [30, 40, 25, 50, 49, 21, 70, 51, 0, 0, 0, 0], // Reemplaza estos datos con tus datos mensuales
         }],
         xaxis: {
             categories: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
@@ -120,4 +125,55 @@
 
     var chart3 = new ApexCharts(document.querySelector("#chartProyectosNuevos"), options2);
     chart3.render();
+
+//GRAFICO EMPLEADOS POR PROYECTO
+
+    var options3 = {
+        series: [{
+            name: 'Cantidad de Empleados',
+            data: [4, 5, 7, 5, 6, 5, 3, 6, 6] // Reemplaza estos datos con la cantidad de empleados por proyecto
+        }],
+        chart: {
+            type: 'bar',
+            height: 350
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                endingShape: 'rounded'
+            },
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+        },
+        xaxis: {
+            categories: ['Proyecto A', 'Proyecto B', 'Proyecto C', 'Proyecto D', 'Proyecto E', 'Proyecto F', 'Proyecto G', 'Proyecto H', 'Proyecto I'], // Nombres de los proyectos
+        },
+        yaxis: {
+            title: {
+                text: 'Cantidad de Empleados'
+            }
+        },
+        fill: {
+            opacity: 1
+        },
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                    return val; // No es necesario mostrar el formato monetario aquí
+                }
+            }
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chartEmpleadosPorProyecto"), options3);
+    chart.render();
+
+
 </script>
