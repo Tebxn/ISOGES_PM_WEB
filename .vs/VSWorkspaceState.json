@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\packages",
+    "\\project_management_for_ISOGES"
   ],
-  "SelectedNode": "\\project_management_for_ISOGES.sln",
+  "SelectedNode": "\\packages",
   "PreviewInSolutionExplorer": false
 }
