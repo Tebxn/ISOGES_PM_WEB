@@ -162,6 +162,7 @@
     <Compile Include="Entities\CorreoEnt.cs" />
     <Compile Include="Entities\ClienteEnt.cs" />
     <Compile Include="Entities\CobroEnt.cs" />
+    <Compile Include="Entities\Estado_ProyectoEnt.cs" />
     <Compile Include="Entities\ProyectoEnt.cs" />
     <Compile Include="Entities\Proyectos_CobrosEnt.cs" />
     <Compile Include="Entities\PuestoEnt.cs" />
@@ -858,7 +859,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\Correo\EnviarCorreo.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -889,6 +889,9 @@
     <Content Include="Views\Usuario\RestablecerContrasena.cshtml" />
     <Content Include="Views\Cobro\CobrosMain.cshtml" />
     <Content Include="Views\Cobro\ConsultarCobrosPorProyecto.cshtml" />
+    <Content Include="Views\Correo\ConsultarCorreos.cshtml" />
+    <Content Include="Views\Correo\EliminarCorreo.cshtml" />
+    <Content Include="Views\Correo\CrearCorreo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

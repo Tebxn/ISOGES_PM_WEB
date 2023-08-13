@@ -44,7 +44,7 @@ namespace project_management_for_ISOGES.Controllers
             CorreoModel model = new CorreoModel();
             model.CrearCorreo(entidad);
 
-            return RedirectToAction("ConsultarCorreos", "Correo");
+            return RedirectToAction("CrearCorreo", "Correo");
         }
 
         [HttpGet]
