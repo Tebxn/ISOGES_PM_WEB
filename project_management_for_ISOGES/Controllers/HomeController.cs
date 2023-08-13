@@ -36,6 +36,7 @@ namespace project_management_for_ISOGES.Controllers
                 Session["Apellido1"] = resp.ObjectSingle.Apellido1;
                 Session["NombreTipoUsuario"] = resp.ObjectSingle.NombreTipoUsuario;
                 Session["PassIsTemp"] = resp.ObjectSingle.PassIsTemp;
+                Session["Token"] = resp.ObjectSingle.Token;
                 return RedirectToAction("Index");
             }
             else

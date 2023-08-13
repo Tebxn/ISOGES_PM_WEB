@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http.Json;
 using System.Net.Http;
 using System.Web;
+using System.Net.Http.Headers;
 
 namespace project_management_for_ISOGES.Models
 {
@@ -16,8 +17,10 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/CrearCorreo";
                 JsonContent body = JsonContent.Create(entidad); //Serializar
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.PostAsync(url, body).Result;
 
                 if (resp.IsSuccessStatusCode)
@@ -33,7 +36,9 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarClientes";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.GetAsync(url).Result;
 
                 if (resp.IsSuccessStatusCode)
@@ -49,7 +54,9 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarCorreos";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.GetAsync(url).Result;
 
                 if (resp.IsSuccessStatusCode)
@@ -65,8 +72,10 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/EliminarCorreo";
                 JsonContent body = JsonContent.Create(entidad); //Serializar
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.PutAsync(url, body).Result;
 
                 if (resp.IsSuccessStatusCode)

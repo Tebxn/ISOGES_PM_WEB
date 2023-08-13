@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Reflection;
 using System.Web;
@@ -52,7 +53,9 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarUsuarios";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.GetAsync(url).Result;
 
                 if (resp.IsSuccessStatusCode)
@@ -68,8 +71,10 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/InactivarUsuario";
                 JsonContent body = JsonContent.Create(entidad); //Serializar
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.PutAsync(url, body).Result;
 
                 if (resp.IsSuccessStatusCode)
@@ -85,7 +90,9 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarTiposUsuarios";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.GetAsync(url).Result;
 
                 if (resp.IsSuccessStatusCode)
@@ -101,7 +108,9 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarPuestos";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.GetAsync(url).Result;
 
                 if (resp.IsSuccessStatusCode)
@@ -117,7 +126,9 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarUsuarioPorId?q=" + q;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.GetAsync(url).Result;
 
                 if (resp.IsSuccessStatusCode)
@@ -133,8 +144,10 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/EditarUsuario";
                 JsonContent body = JsonContent.Create(entidad); //Serializar
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.PutAsync(url, body).Result;
 
                 if (resp.IsSuccessStatusCode)
@@ -150,8 +163,10 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ActivarUsuario";
                 JsonContent body = JsonContent.Create(entidad); //Serializar
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.PutAsync(url, body).Result;
 
                 if (resp.IsSuccessStatusCode)
@@ -167,8 +182,10 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/CambiarContrasena";
                 JsonContent body = JsonContent.Create(entidad); //Serializar
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.PutAsync(url, body).Result;
 
                 if (resp.IsSuccessStatusCode)
