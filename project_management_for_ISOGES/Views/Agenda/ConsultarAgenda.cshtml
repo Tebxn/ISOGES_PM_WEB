@@ -1,0 +1,68 @@
+﻿@model IEnumerable<project_management_for_ISOGES.Entities.Requerimiento_ProyectoEnt>
+
+@{
+    ViewBag.Title = "ConsultarRequerimiento_Proyecto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.MsjPantalla != null)
+{
+    <div class="alert alert-warning d-flex align-items-center justify-content-between mb-4">
+        @ViewBag.MsjPantalla
+    </div>
+}
+<section class="vh-800" style="background-color: #eee; margin-left: 200px;">
+    <div class="container py-5 h-75">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-12 col-xl-12">
+
+                <div class="card">
+                    <div class="card-header p-3">
+                        <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Lista de Asignaciones</h5>
+                    </div>
+                    <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 800px">
+
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre del Proyecto</th>
+                                    <th scope="col">Requerimiento</th>
+                                    <th scope="col">Fecha Inicio</th>
+                                    <th scope="col">Fecha Limite</th>
+                                    <th scope="col">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.NombreProyecto</td>
+                                        <td>@item.NombreRequerimiento</td>
+                                        <td>@item.FechaInicio</td>
+                                        <td>@item.FechaLimite</td>
+                                        <td>
+                                            @if (item.Estado == true)
+                                            {
+                                                <p>Completo</p>
+                                            }
+                                            else
+                                            {
+                                                <p>Pendiente</p>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("CambiarEstadoAgenda","Agenda", new { q = item.IdProyecto, q2 = item.IdRequerimiento })"><i class="fas fa-check text-success me-3"></i></a>
+                                            <a href="@Url.Action("#","#", new { q = item.IdProyecto })" class="btn btn-outline-info">Ver Detalles</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

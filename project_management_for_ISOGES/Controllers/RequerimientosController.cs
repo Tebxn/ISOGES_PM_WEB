@@ -73,7 +73,7 @@ namespace project_management_for_ISOGES.Controllers
             {
                 string ruta = @"C:\Users\Saul Hernandez\source\repos\ISOGES_PM_WEB\project_management_for_ISOGES\PDFs\" + nombreArchivo;
                 file.SaveAs(ruta);
-                entidad.URL = @"\PDFs\" + nombreArchivo;
+                entidad.URLRequerimiento = @"\PDFs\" + nombreArchivo;
 
                 var resp = model.EditarRequerimiento(entidad);
                 return RedirectToAction("ConsultarRequerimientos", "Requerimientos");
