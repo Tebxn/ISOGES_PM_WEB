@@ -1,17 +1,11 @@
 ﻿@model IEnumerable<project_management_for_ISOGES.Entities.Requerimiento_ProyectoEnt>
 
 @{
-    ViewBag.Title = "ConsultarRequerimiento_Proyecto";
+    ViewBag.Title = "ConsultarAgenda";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (ViewBag.MsjPantalla != null)
-{
-    <div class="alert alert-warning d-flex align-items-center justify-content-between mb-4">
-        @ViewBag.MsjPantalla
-    </div>
-}
-<section class="vh-800" style="background-color: #eee; margin-left: 200px;">
+<section class="vh-800">
     <div class="container py-5 h-75">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-12 col-xl-12">
@@ -37,7 +31,18 @@
                                 {
                                     <tr>
                                         <td>@item.NombreProyecto</td>
-                                        <td>@item.NombreRequerimiento</td>
+                                        <td>
+                                            @if (item.URLRequerimiento != null)
+                                            {
+                                                <a href="@Url.Content("~/" + item.URLRequerimiento)" target="_blank">
+                                                    <i class="far fa-file-pdf"></i> Ver PDF
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <p>No hay documento agregado</p>
+                                            }
+                                        </td>
                                         <td>@item.FechaInicio</td>
                                         <td>@item.FechaLimite</td>
                                         <td>
@@ -52,13 +57,27 @@
                                         </td>
                                         <td>
                                             <a href="@Url.Action("CambiarEstadoAgenda","Agenda", new { q = item.IdProyecto, q2 = item.IdRequerimiento })"><i class="fas fa-check text-success me-3"></i></a>
-                                            <a href="@Url.Action("#","#", new { q = item.IdProyecto })" class="btn btn-outline-info">Ver Detalles</a>
+                                            <button type="button" class="btn btn-outline-info passingID"
+                                                    data-proy-name="@item.NombreProyecto"
+                                                    data-proy-desc="@item.DescripcionProyecto"
+                                                    data-client-name="@item.NombreClienteProyecto"
+                                                    data-req-name="@item.NombreRequerimiento"
+                                                    data-req-cod="@item.CodigoRequerimiento"
+                                                    data-req-desc="@item.DescripcionRequerimiento"
+                                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                Ver Detalles
+                                            </button>
                                         </td>
                                     </tr>
                                 }
                             </tbody>
                         </table>
-
+                        @if (ViewBag.MsjPantalla != null)
+                        {
+                            <div class="alert alert-warning d-flex align-items-center justify-content-between mb-4">
+                                @ViewBag.MsjPantalla
+                            </div>
+                        }
                     </div>
                 </div>
 
@@ -66,3 +85,61 @@
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #eee;">
+                <h4 class="modal-title" id="staticBackdropLabel">
+                    <strong><p id="txtProyName"></p></strong>
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h5>
+                        <p style="display: inline; color: #130431 "><strong>Descripción del Proyecto: </strong></p>
+                    </h5>
+                </div>
+                <textarea rows="2" style="width:100%; border:0px; text-align:justify; resize:none" id="txtProyDesc"></textarea>
+                <div>
+                    <h5>
+                        <p style="display: inline; color: #130431"><strong>Nombre del Cliente: </strong></p>
+                    </h5>
+                    <p id="txtClientName" style="color:black"></p>
+                </div>
+                <div>
+                    <h5>
+                        <p style="display: inline; color: #130431"><strong>Nombre del Requerimiento: </strong></p>
+                    </h5>
+                        <p id="txtReqName" style="color:black"></p>
+                    <h5>
+                        <p style="display: inline; color: #130431"><strong>Código del Requerimiento: </strong></p>
+                    </h5>
+                        <p id="txtReqCod" style="color:black"></p>
+                </div>
+                <h5>
+                    <p style="display: inline; color: #130431"><strong>Descripción del requerimiento: </strong></p>
+                </h5>
+                <textarea rows="3" style="width:100%; border:0px; text-align:justify; resize:none" id="txtReqDesc"></textarea>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+
+    $(".passingID").click(function () {
+        $("#txtProyName").text($(this).attr('data-proy-name'));
+        $("#txtProyDesc").val($(this).attr('data-proy-desc'));
+        $("#txtClientName").text($(this).attr('data-client-name'));
+        $("#txtReqName").text($(this).attr('data-req-name'));
+        $("#txtReqDesc").val($(this).attr('data-req-desc'));
+        $("#txtReqCod").text($(this).attr('data-req-cod'));
+    });
+
+</script>
