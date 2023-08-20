@@ -12,7 +12,16 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
+    <style>
+        .card {
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
 
+            .card:hover {
+                box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            }
+    </style>
 </head>
 <body>
     @if ((bool)Session["PassIsTemp"])
@@ -82,7 +91,7 @@
                         </li>
                         @*BACKLOG*@
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                            <a class="sidebar-link" href="@Url.Action("ListadoProyectos","Proyecto")" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-article"></i>
                                 </span>

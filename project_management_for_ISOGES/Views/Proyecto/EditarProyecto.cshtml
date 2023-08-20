@@ -15,42 +15,40 @@
                         <div class="card-body">
                             @using (Html.BeginForm("EditarProyecto", "Proyecto", FormMethod.Post))
                             {
-                            <form>
-                                <div>
-                                    @Html.TextBoxFor(m => m.IdProyecto, new { @type = "hidden", @class = "form-control", @placeholder = "IdProyecto", @readonly = "readonly" })
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="NombreProyecto" class="form-label">Nombre Proyecto</label>
-                                        @Html.TextBoxFor(m => m.NombreProyecto, new { @type = "text", @class = "form-control", @placeholder = "Nombre Proyecto" })
+                                <form>
+                                    <div>
+                                        @Html.TextBoxFor(m => m.IdProyecto, new { @type = "hidden", @class = "form-control", @placeholder = "IdProyecto", @readonly = "readonly" })
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="Descripcion" class="form-label">Descripcion</label>
-                                        @Html.TextBoxFor(m => m.Descripcion, new { @type = "text", @class = "form-control", placeholder = "Descripcion" })
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="NombreProyecto" class="form-label">Nombre Proyecto</label>
+                                            @Html.TextBoxFor(m => m.NombreProyecto, new { @type = "text", @class = "form-control", @placeholder = "Nombre Proyecto" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Descripcion" class="form-label">Descripcion</label>
+                                            @Html.TextBoxFor(m => m.DescripcionProyecto, new { @type = "text", @class = "form-control", placeholder = "Descripcion" })
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="MontoEstimado" class="form-label">Monto Estimado</label>
-                                        @Html.TextBoxFor(m => m.MontoEstimado, new { @type = "number", @class = "form-control", placeholder = "Monto Estimado" })
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="MontoEstimado" class="form-label">Monto Estimado</label>
+                                            @Html.TextBoxFor(m => m.MontoEstimado, new { @type = "number", @class = "form-control", placeholder = "Monto Estimado" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Estado" class="form-label">Estado</label>
+                                            @Html.TextBoxFor(m => m.Estado, new { @type = "text", @class = "form-control", placeholder = "Estado", @id = "Estado", @readonly = "readonly" })
+                                            <script>
+                                                document.addEventListener("DOMContentLoaded", function () {
+                                                    var estadoTextBox = document.getElementById("Estado");
+                                                    if (estadoTextBox.value == "True") {
+                                                        estadoTextBox.value = "Activo";
+                                                    } else {
+                                                        estadoTextBox.value = "Inactivo";
+                                                    }
+                                                });
+                                            </script>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="Estado" class="form-label">Estado</label>
-                                        @Html.TextBoxFor(m => m.Estado, new { @type = "text", @class = "form-control", placeholder = "Estado", @id = "Estado" })
-                                        <script>
-                                            document.addEventListener("DOMContentLoaded", function () {
-                                                var estadoTextBox = document.getElementById("Estado");
-                                                if (estadoTextBox.value == "True") {
-                                                    estadoTextBox.value = "Activo";
-                                                } else {
-                                                    estadoTextBox.value = "Inactivo";
-                                                }
-                                            });
-                                        </script>
-
-
-                                    </div>
-
 
                                     <div class="row mb-3">
                                         <div class="col-md-6">
@@ -63,7 +61,7 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <label for="EstadoGeneral" class="form-label">Avance</label>
+                                            <label for="EstadoGeneral" class="form-label">Etapa</label>
                                             @Html.DropDownListFor(m => m.EstadoGeneral, ViewBag.ComboEstados as List<SelectListItem>, new
                                             {
                                                 @class = "form-control",
@@ -72,24 +70,14 @@
                                         </div>
 
                                     </div>
-                                </div>
 
-                           
 
-                               <!-- <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="Cliente" class="form-label">Clientes</label>
-                                       
+                                    <div class="row justify-content-center">
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-success w-100 py-2 fs-4 rounded-2">Actualizar proyecto</button>
+                                        </div>
                                     </div>
-
-                                </div>-->
-
-                                <div class="row justify-content-center">
-                                    <div class="col-6">
-                                        <button type="submit" class="btn btn-success w-100 py-2 fs-4 rounded-2">Actualizar proyecto</button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
                             }
                         </div>
                     </div>

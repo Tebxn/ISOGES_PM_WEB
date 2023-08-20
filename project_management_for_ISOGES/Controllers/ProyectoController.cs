@@ -51,9 +51,6 @@ namespace project_management_for_ISOGES.Controllers
             return RedirectToAction("ConsultarProyectos", "Proyecto");
         }
 
-       
-
-
         [HttpGet]
         public ActionResult EditarProyecto(long q)
         {
@@ -111,7 +108,12 @@ namespace project_management_for_ISOGES.Controllers
             }
         }
 
-
+        [HttpGet]
+        public ActionResult ListadoProyectos()
+        {
+            var resp = model.ConsultarProyectos();
+            return View(resp);
+        }
 
 
     }
