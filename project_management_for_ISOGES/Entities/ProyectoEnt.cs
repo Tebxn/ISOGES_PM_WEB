@@ -10,7 +10,7 @@ namespace project_management_for_ISOGES.Entities
     {
         public long IdProyecto { get; set; }
         public string NombreProyecto { get; set; }
-        public string Descripcion { get; set; }
+        public string DescripcionProyecto { get; set; }
         public long Cliente { get; set; }
         public string NombreCliente { get; set; }
         public bool Estado { get; set; }

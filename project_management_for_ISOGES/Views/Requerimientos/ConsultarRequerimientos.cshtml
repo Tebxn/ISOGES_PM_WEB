@@ -26,13 +26,13 @@
                             {
                                 <tr>
                                     <td>@item.IdRequerimiento</td>
-                                    <td>@item.Codigo</td>
-                                    <td>@item.Nombre</td>
-                                    <td>@item.Descripcion</td>
+                                    <td>@item.CodigoRequerimiento</td>
+                                    <td>@item.NombreRequerimiento</td>
+                                    <td>@item.DescripcionRequerimiento</td>
                                     <td>
-                                        @if (item.URL != null)
+                                        @if (item.URLRequerimiento != null)
                                         {
-                                            <a href="@Url.Content("~/" + item.URL)" target="_blank">
+                                            <a href="@Url.Content("~/" + item.URLRequerimiento)" target="_blank">
                                                 <i class="far fa-file-pdf"></i> Ver PDF
                                             </a>
                                         }
@@ -52,8 +52,8 @@
                                         }
                                     </td>
                                     <td>
-                                        <a href="@Url.Action("EditarRequerimiento","Requerimientos", new { q = item.IdRequerimiento })" class="btn btn-light">Editar</a>
-                                        <a href="@Url.Action("InactivarRequerimiento","Requerimientos", new { q = item.IdRequerimiento })" class="btn btn-danger">Cambiar Estado</a>
+                                        <a href="@Url.Action("EditarRequerimiento","Requerimientos", new { q = item.IdRequerimiento })" class="btn btn-outline-info">Editar</a>
+                                        <a href="@Url.Action("InactivarRequerimiento","Requerimientos", new { q = item.IdRequerimiento })" class="btn btn-outline-danger">Cambiar Estado</a>
                                     </td>
                                 </tr>
                             }

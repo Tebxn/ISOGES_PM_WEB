@@ -151,6 +151,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AgendaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CobroController.cs" />
     <Compile Include="Controllers\CorreoController.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="Entities\ProyectoEnt.cs" />
     <Compile Include="Entities\Proyectos_CobrosEnt.cs" />
     <Compile Include="Entities\PuestoEnt.cs" />
+    <Compile Include="Entities\Requerimiento_ProyectoEnt.cs" />
     <Compile Include="Entities\RequerimientoEnt.cs" />
     <Compile Include="Entities\TipoUsuarioEnt.cs" />
     <Compile Include="Entities\UsuarioEnt.cs" />
@@ -178,6 +180,7 @@
     <Compile Include="Models\CobroModel.cs" />
     <Compile Include="Models\ProyectoModel.cs" />
     <Compile Include="Models\RequerimientoModel.cs" />
+    <Compile Include="Models\Requerimiento_ProyectoModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Entities\Utilities.cs" />
     <Compile Include="Models\UtilitiesModel.cs" />
@@ -892,6 +895,7 @@
     <Content Include="Views\Correo\ConsultarCorreos.cshtml" />
     <Content Include="Views\Correo\EliminarCorreo.cshtml" />
     <Content Include="Views\Correo\CrearCorreo.cshtml" />
+    <Content Include="Views\Agenda\ConsultarAgenda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

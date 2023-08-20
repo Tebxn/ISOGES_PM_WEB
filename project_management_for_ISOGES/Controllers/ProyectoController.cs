@@ -29,7 +29,7 @@ namespace project_management_for_ISOGES.Controllers
 
             foreach (var item in respClientes)
             {
-                clientes.Add(new SelectListItem { Value = item.IdCliente .ToString(), Text = item.Nombre.ToString() });
+                clientes.Add(new SelectListItem { Value = item.IdCliente .ToString(), Text = item.NombreCliente.ToString() });
             }
 
             foreach (var item in respEstados)
@@ -66,7 +66,7 @@ namespace project_management_for_ISOGES.Controllers
 
             foreach (var item in respClientes)
             {
-                clientes.Add(new SelectListItem { Value = item.IdCliente.ToString(), Text = item.Nombre.ToString() });
+                clientes.Add(new SelectListItem { Value = item.IdCliente.ToString(), Text = item.NombreCliente.ToString() });
             }
 
             foreach (var item in respEstados)

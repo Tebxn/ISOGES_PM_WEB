@@ -15,6 +15,7 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarCobrosPorProyecto?q=" + q;
                 HttpResponseMessage resp = client.GetAsync(url).Result;
 

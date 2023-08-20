@@ -24,6 +24,7 @@ namespace project_management_for_ISOGES.Entities
         public string NombrePuesto { get; set; }//puesto
         public string NuevaContrasena { get; set; } //local
         public string ConfirmarNuevaContrasena { get; set; } //local
+        public string Token { get; set; }
     }
 
     public class UsuarioResponse : Response
