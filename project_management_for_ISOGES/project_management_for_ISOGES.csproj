@@ -907,6 +907,7 @@
     <Content Include="Views\Correo\EnviarCorreo.cshtml" />
     <Content Include="Views\Proyecto\ConsultarProyectoPorId.cshtml" />
     <Content Include="Views\Proyecto\NuevoTask.cshtml" />
+    <Content Include="Views\Usuario\ConsultarPerfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,26 @@
+﻿@model project_management_for_ISOGES.Entities.UsuarioEnt
+@{
+    ViewBag.Title = "ConsultarPerfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="body-wrapper">
+    <h2>Perfil</h2>
+    <br/>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body d-flex justify-content-between">
+                <div>
+                    <h5 class="card-title">Datos de usuario</h5>
+                    <br />
+                    <p class="card-text"><strong>Nombre:</strong> @Model.Nombre </p>
+                    <p class="card-text"><strong>Apellido1:</strong> @Model.Apellido1 </p>
+                    <p class="card-text"><strong>Apellido2:</strong> @Model.Apellido2 </p>
+                    <p class="card-text"><strong>Cedula:</strong> @Model.Identificacion </p>
+                    <p class="card-text"><strong>Correo Electronico:</strong> @Model.CorreoElectronico </p>
+                    <p class="card-text"><strong>Telefono:</strong> @Model.Telefono </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

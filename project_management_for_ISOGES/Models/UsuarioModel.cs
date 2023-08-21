@@ -215,5 +215,23 @@ namespace project_management_for_ISOGES.Models
                 return 0;
             }
         }
+
+        public UsuarioEnt ConsultarPerfil(long q)
+        {
+            using (var client = new HttpClient())
+            {
+                string token = HttpContext.Current.Session["Token"].ToString();
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultarUsuarioPorId?q=" + q;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage resp = client.GetAsync(url).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<UsuarioEnt>().Result;
+                }
+
+                return new UsuarioEnt();
+            }
+        }
     }
 }
