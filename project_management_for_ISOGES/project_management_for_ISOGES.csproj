@@ -857,6 +857,7 @@
     <Content Include="assets\scss\variables\_theme-variables.scss" />
     <Content Include="assets\scss\variables\_variables.scss" />
     <Content Include="Images\isoges_new_logo172x86.webp" />
+    <Content Include="PDFs\Documento prueba.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -904,6 +905,8 @@
     <Content Include="Views\Agenda\ConsultarAgenda.cshtml" />
     <Content Include="Views\Cobro\AgregarCobro.cshtml" />
     <Content Include="Views\Correo\EnviarCorreo.cshtml" />
+    <Content Include="Views\Proyecto\ConsultarProyectoPorId.cshtml" />
+    <Content Include="Views\Proyecto\NuevoTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

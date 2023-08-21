@@ -176,5 +176,23 @@ namespace project_management_for_ISOGES.Models
                 return null;
             }
         }
+            public int CrearRequerimientoProyecto(Requerimiento_ProyectoEnt entidad)
+        {
+            using (var client = new HttpClient())
+            {
+                string token = HttpContext.Current.Session["Token"].ToString();
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/CrearRequerimientoPorProyecto";
+                JsonContent body = JsonContent.Create(entidad); //Serializar
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage resp = client.PostAsync(url, body).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<int>().Result;
+                }
+
+                return 0;
+            }
+        }
     }
 }
