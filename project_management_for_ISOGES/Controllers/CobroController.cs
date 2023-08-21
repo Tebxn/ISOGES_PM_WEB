@@ -33,6 +33,50 @@ namespace project_management_for_ISOGES.Controllers
             
             return RedirectToAction("CobrosMain", "Cobro");
         }
+
+        [HttpGet]
+        public ActionResult CrearCobro()
+        {
+            var respProyectos = model.ConsultarProyectos();
+            var respTipos = model.ConsultarTipoCobros();
+            var respEstadosCobros = model.ConsultarEstadoCobros();
+
+
+
+            var proyectos = new List<SelectListItem>();
+            var tipoCobros = new List<SelectListItem>();
+            var estadoCobros = new List<SelectListItem>();
+            foreach (var item in respProyectos)
+            {
+                proyectos.Add(new SelectListItem { Value = item.IdProyecto.ToString(), Text = item.NombreProyecto.ToString() });
+            }
+
+            foreach (var item in respTipos)
+            {
+                tipoCobros.Add(new SelectListItem { Value = item.IdTipoCobro.ToString(), Text = item.NombreTipoCobro.ToString() });
+            }
+
+            foreach (var item in respEstadosCobros)
+            {
+                estadoCobros.Add(new SelectListItem { Value = item.IdEstadoCobro.ToString(), Text = item.NombreEstado.ToString() });
+            }
+
+            ViewBag.ComboProyectos = proyectos;
+            ViewBag.ComboTipoCobros = tipoCobros;
+            ViewBag.ComboEstadoCobros = estadoCobros;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CrearCobro(Entities.CobroEnt entidad)
+        {
+            CobroModel model = new CobroModel();
+            model.CrearCobro(entidad);
+
+            return RedirectToAction("CobrosMain", "Cobro");
+        }
+
     }
     
 }
