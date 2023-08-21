@@ -106,22 +106,15 @@
                                 <span class="hide-menu">Cobros</span>
                             </a>
                         </li>
-                        @*BACKLOG*@
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-file-description"></i>
-                                </span>
-                                <span class="hide-menu">Documentos</span>
-                            </a>
-                        </li>
                         @*ADMIN*@
+                        @if (Session["NombreTipoUsuario"].Equals("Administrador"))
+                        {
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">ADMINISTRATIVO</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="@Url.Action("ConsultarUsuarios","Usuario")" aria-expanded="false">
+                            <a class="sidebar-link" href="@Url.Action("ConsultarUsuarios", "Usuario")" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-users"></i>
                                 </span>
@@ -129,7 +122,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="@Url.Action("ConsultarProyectos","Proyecto")" aria-expanded="false">
+                            <a class="sidebar-link" href="@Url.Action("ConsultarProyectos", "Proyecto")" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-file"></i>
                                 </span>
@@ -137,7 +130,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="@Url.Action("ConsultarRequerimientos","Requerimientos")" aria-expanded="false">
+                            <a class="sidebar-link" href="@Url.Action("ConsultarRequerimientos", "Requerimientos")" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-books"></i>
                                 </span>
@@ -145,7 +138,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="@Url.Action("ConsultarClientes","Cliente")" aria-expanded="false">
+                            <a class="sidebar-link" href="@Url.Action("ConsultarClientes", "Cliente")" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-address-book"></i>
                                 </span>
@@ -153,13 +146,14 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="@Url.Action("ConsultarCorreos","Correo")" aria-expanded="false">
+                            <a class="sidebar-link" href="@Url.Action("ConsultarCorreos", "Correo")" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-address-book"></i>
                                 </span>
                                 <span class="hide-menu">Enviar Correo</span>
                             </a>
                         </li>
+                        }
                         @*FIN ADMIN*@
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>

@@ -36,8 +36,10 @@ namespace project_management_for_ISOGES.Models
         {
             using (var client = new HttpClient())
             {
+                string token = HttpContext.Current.Session["Token"].ToString();
                 string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/CrearUsuario";
                 JsonContent body = JsonContent.Create(entidad); //Serializar
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.PostAsync(url, body).Result;
 
                 if (resp.IsSuccessStatusCode)

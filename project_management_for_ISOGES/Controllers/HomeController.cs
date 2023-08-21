@@ -31,6 +31,7 @@ namespace project_management_for_ISOGES.Controllers
             if (resp.ObjectSingle.Estado)
             {
                 Session["IdUsuario"] = resp.ObjectSingle.IdUsuario;
+                Session["TipoUsuario"] = resp.ObjectSingle.TipoUsuario;
                 Session["CorreoElectronico"] = resp.ObjectSingle.CorreoElectronico;
                 Session["NombreUsuario"] = resp.ObjectSingle.Nombre;
                 Session["Apellido1"] = resp.ObjectSingle.Apellido1;
