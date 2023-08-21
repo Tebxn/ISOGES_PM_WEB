@@ -15,5 +15,6 @@ namespace project_management_for_ISOGES.Entities
         public string NombreTipoCobro { get; set; } //TipoCobro
         public string NombreEstado { get; set; } //EstadoCobro
         public string FechaSola { get; set; } //local
+        public string NombreProyecto { get; set; }
     }
 }

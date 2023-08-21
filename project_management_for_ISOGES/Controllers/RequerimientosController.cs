@@ -11,6 +11,9 @@ namespace project_management_for_ISOGES.Controllers
     public class RequerimientosController : Controller
     {
         RequerimientoModel model = new RequerimientoModel();
+        ProyectoModel proyectoModel = new ProyectoModel();
+        UsuarioModel usuarioModel = new UsuarioModel();
+
 
         [HttpGet]
         public ActionResult ConsultarRequerimientos()
@@ -92,6 +95,38 @@ namespace project_management_for_ISOGES.Controllers
                 }
             }
 
+        }
+        [HttpGet]
+        public ActionResult NuevoTask(long q)
+        {
+            var listadoRequerimientos = model.ConsultarRequerimientos();
+            var listadoUsuarios = usuarioModel.ConsultarUsuarios();
+            var proyecto = proyectoModel.ConsultarProyectoPorId(q);
+
+            var requerimientos = new List<SelectListItem>();
+            var usuarios = new List<SelectListItem>();
+
+            foreach (var item in listadoRequerimientos)
+            {
+                requerimientos.Add(new SelectListItem { Value = item.IdRequerimiento.ToString(), Text = item.NombreRequerimiento.ToString() });
+            }
+
+            foreach (var item in listadoUsuarios)
+            {
+                usuarios.Add(new SelectListItem { Value = item.IdUsuario.ToString(), Text = item.Nombre.ToString() });
+            }
+            ViewBag.ComboRequerimientos = requerimientos;
+            ViewBag.ComboUsuarios = usuarios;
+
+            return View(proyecto);
+        }
+
+        [HttpPost]
+        public ActionResult NuevoTask(Entities.Requerimiento_ProyectoEnt entidad)
+        {
+            model.NuevoTask(entidad);
+
+            return RedirectToAction("ConsultarProyectos", "Proyecto");
         }
     }
 }

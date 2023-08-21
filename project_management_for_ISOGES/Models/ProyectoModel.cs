@@ -140,5 +140,41 @@ namespace project_management_for_ISOGES.Models
                 return 0;
             }
         }
+
+        public List<Requerimiento_ProyectoEnt> ConsultaRequerimientosPorProyecto(long q)
+        {
+            using (var client = new HttpClient())
+            {
+                string token = HttpContext.Current.Session["Token"].ToString();
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultaRequerimientosPorProyecto?q=" + q;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage resp = client.GetAsync(url).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<List<Requerimiento_ProyectoEnt>>().Result;
+                }
+
+                return null;
+            }
+        }
+
+        public List<CobroEnt> ConsultaCobrosProyectoPorId(long q)
+        {
+            using (var client = new HttpClient())
+            {
+                string token = HttpContext.Current.Session["Token"].ToString();
+                string url = ConfigurationManager.AppSettings["urlApi"].ToString() + "api/ConsultaCobrosProyectoPorId?q=" + q;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage resp = client.GetAsync(url).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<List<CobroEnt>>().Result;
+                }
+
+                return null;
+            }
+        }
     }
 }

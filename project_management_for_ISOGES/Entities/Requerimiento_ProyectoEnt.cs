@@ -26,6 +26,7 @@ namespace project_management_for_ISOGES.Entities
         public string CodigoRequerimiento { get; set; }
         public string URLRequerimiento { get; set; }
         public string DescripcionRequerimiento { get; set; }
+        public string NombreEmpleadoAsignado { get; set; }
 
     }
 }

@@ -1,27 +1,60 @@
-﻿@model IEnumerable<project_management_for_ISOGES.Entities.ProyectoEnt>
+﻿@model IEnumerable<project_management_for_ISOGES.Entities.CobroEnt>
 
 @{
     ViewBag.Title = "Cobros";
 }
 
-@foreach (var item in Model)
-{
-    <div class="container mt-5 col-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">@item.NombreProyecto</h5>
-                <p class="card-text">@item.NombreCliente</p>
-                <p class="card-text">Fecha</p>
-                @if(item.Estado == true)
-                { 
-                    <p class="card-text">Activo</p>
-                }else
-                { 
-                    <p class="card-text">Concluido</p>
-                }
-                <p class="card-text"></p>
-                <a href="@Url.Action("ConsultarCobrosPorProyecto","Cobro", new { q = item.IdProyecto })" class="btn btn-primary">Ver cobros</a>
+<div class="body-wrapper">
+
+    <!--  Row 1 -->
+    <div class="row">
+        <div class="col-12">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id Cobro</th>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                        <th>Estado</th>
+                        <th>Monto</th>
+                        <th>Proyecto</th>
+
+                    </tr>
+                <thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.IdCobro</td>
+                            <td>@item.Fecha</td>
+                            <td>@item.NombreTipoCobro </td>
+                            <td>@item.NombreEstado</td>
+                            <td>@item.Monto</td>
+                            <td>@item.NombreProyecto</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-8">
+                    <div style="text-align:center" class="" role="alert">
+                        @ViewBag.MsjPantalla
+                    </div>
+                </div>
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <a class="btn btn-primary float-left" href="@Url.Action("CrearProyecto","Proyecto")">Agregar Cobro</a>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
+
         </div>
     </div>
-}
+</div>

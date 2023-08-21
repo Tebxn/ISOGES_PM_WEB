@@ -26,30 +26,28 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>@item.IdProyecto</td>
-                        <td>@item.NombreProyecto</td>
-                        <td>@item.NombreEstado</td>
-                        <td>@item.NombreCliente</td>
-                        <td>@item.NombreEstado</td>
+                        <tr>
+                            <td>@item.IdProyecto</td>
+                            <td>@item.NombreProyecto</td>
+                            <td>@item.NombreEstado</td>
+                            <td>@item.NombreCliente</td>
+                            <td>@item.NombreEstado</td>
 
-                        <td>
-                            @if (item.Estado == true)
-                            {
-                                <p>Activo</p>
-                            }
-                            else
-                            {
-                                <p>Inactivo</p>
-                            }
-                        </td>
-                        <td>
-                        <td>
-                            <a href="@Url.Action("EditarProyecto","Proyecto", new { q = item.IdProyecto })" class="btn btn-success">Editar</a>
-                            <a href="@Url.Action("InactivarProyecto","Proyecto", new { q = item.IdProyecto })" class="btn btn-danger">Inactivar</a>
-                        </td>
-                        </td>
-                    </tr>
+                            <td>
+                                @if (item.Estado == true)
+                                {
+                                    <p>Activo</p>
+                                }
+                                else
+                                {
+                                    <p>Inactivo</p>
+                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("EditarProyecto","Proyecto", new { q = item.IdProyecto })" class="btn btn-success">Editar</a>
+                                <a href="@Url.Action("InactivarProyecto","Proyecto", new { q = item.IdProyecto })" class="btn btn-danger">Inactivar</a>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -59,7 +57,7 @@
                         @ViewBag.MsjPantalla
                     </div>
                 </div>
-               
+
 
                 <div class="container">
                     <div class="row">

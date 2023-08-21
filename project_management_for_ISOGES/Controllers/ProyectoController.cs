@@ -115,6 +115,16 @@ namespace project_management_for_ISOGES.Controllers
             return View(resp);
         }
 
+        [HttpGet]
+        public ActionResult ConsultarProyectoPorId(long q)
+        {
+            var resp = model.ConsultarProyectoPorId(q);
+            var respRequerimientosProyecto = model.ConsultaRequerimientosPorProyecto(q);
+            var respCobrosProyecto = model.ConsultaCobrosProyectoPorId(q);
 
+            ViewBag.ListaRequerimientos = respRequerimientosProyecto;
+            ViewBag.ListaCobros = respCobrosProyecto;
+            return View(resp);
+        }
     }
 }

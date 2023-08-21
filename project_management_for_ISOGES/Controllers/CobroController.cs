@@ -16,7 +16,7 @@ namespace project_management_for_ISOGES.Controllers
         [HttpGet]
         public ActionResult CobrosMain()
         {
-            var resp = modelProyecto.ConsultarProyectos();
+            var resp = model.ListadoCobros();
             return View(resp);
         }
 
@@ -34,4 +34,5 @@ namespace project_management_for_ISOGES.Controllers
             return RedirectToAction("CobrosMain", "Cobro");
         }
     }
+    
 }

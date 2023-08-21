@@ -16,7 +16,7 @@
                         <p class="card-text"><strong>Cliente:</strong> @item.NombreCliente</p>
                         <p class="card-text"><strong>Etapa:</strong> @item.NombreEstado</p>
                     </div>
-                    <button class="btn btn-primary">Ver detalles</button>
+                    <a href="@Url.Action("ConsultarProyectoPorId","Proyecto", new { q = item.IdProyecto })" class="btn btn-primary">Ver</a>
                 </div>
             </div>
         </div>
