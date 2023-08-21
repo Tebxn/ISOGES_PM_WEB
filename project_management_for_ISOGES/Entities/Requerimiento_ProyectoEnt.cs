@@ -7,6 +7,7 @@ namespace project_management_for_ISOGES.Entities
 {
     public class Requerimiento_ProyectoEnt
     {
+        public long IdReqProy { get; set; }
         public long IdProyecto { get; set; }
         public long IdRequerimiento { get; set; }
         public long EmpleadoAsignado { get; set; }
