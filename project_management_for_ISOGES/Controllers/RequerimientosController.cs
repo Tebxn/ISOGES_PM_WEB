@@ -2,6 +2,7 @@
 using project_management_for_ISOGES.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -74,7 +75,7 @@ namespace project_management_for_ISOGES.Controllers
 
             if (extension == ".pdf" && tamanno <= 1048576)
             {
-                string ruta = @"C:\Users\Saul Hernandez\source\repos\ISOGES_PM_WEB\project_management_for_ISOGES\PDFs\" + nombreArchivo;
+                string ruta = @ConfigurationManager.AppSettings["URLPDF"] + nombreArchivo;
                 file.SaveAs(ruta);
                 entidad.URLRequerimiento = @"\PDFs\" + nombreArchivo;
 

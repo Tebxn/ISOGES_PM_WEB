@@ -1,0 +1,60 @@
+﻿@model project_management_for_ISOGES.Entities.Requerimiento_ProyectoEnt
+@{
+    ViewBag.Title = "NuevoTask";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+    <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="d-flex align-items-center justify-content-center w-100">
+            <div class="row justify-content-center w-100">
+                <div class="col-md-10 col-lg-8 col-xxl-6">
+                    <div class="card mb-0">
+                        <div class="card-body">
+                            @using (Html.BeginForm("CrearRequerimientoProyecto", "Proyecto", FormMethod.Post))
+                            {
+                            <form>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="IdProyecto" class="form-label">ID del Proyecto</label>
+                                        @Html.TextBoxFor(m => m.IdProyecto, new { @type = "text", @class = "form-control", @placeholder = "ID Proyecto" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="IdRequerimiento" class="form-label">ID del Requerimiento</label>
+                                        @Html.TextBoxFor(m => m.IdRequerimiento, new { @type = "text", @class = "form-control", @placeholder = "ID Requerimiento" })
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <label for="EmpleadoAsignado" class="form-label">ID del Empleado</label>
+                                        @Html.TextBoxFor(m => m.EmpleadoAsignado, new { @type = "text", @class = "form-control", @placeholder = "ID Usuario" })
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <label for="FechaInicio" class="form-label">Fecha de Inicio</label>
+                                        @Html.TextBoxFor(m => m.FechaInicio, new { @type = "text", @class = "form-control", @placeholder = "Fecha Inicio" })
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <label for="FechaLimite" class="form-label">Fecha Limite</label>
+                                        @Html.TextBoxFor(m => m.FechaLimite, new { @type = "text", @class = "form-control", @placeholder = "Fecha Limite" })
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-primary w-100 py-2 fs-4 rounded-2">Crear Requerimiento</button>
+                                    </div>
+                                </div>
+                            </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

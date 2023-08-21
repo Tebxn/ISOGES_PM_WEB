@@ -126,5 +126,20 @@ namespace project_management_for_ISOGES.Controllers
             ViewBag.ListaCobros = respCobrosProyecto;
             return View(resp);
         }
+
+        [HttpPost]
+        public ActionResult CrearRequerimientoProyecto(Entities.Requerimiento_ProyectoEnt entidad)
+        {
+            entidad.Estado = false;
+            ProyectoModel model = new ProyectoModel();
+            model.CrearRequerimientoProyecto(entidad);
+
+            return RedirectToAction("ListadoProyectos", "Proyecto");
+        }
+        [HttpGet]
+        public ActionResult NuevoTask(long q)
+        {
+            return View();
+        }
     }
 }
