@@ -189,5 +189,13 @@ namespace project_management_for_ISOGES.Controllers
             return RedirectToAction("RestablecerContrasena", "Usuario");
         }
 
+        [HttpGet]
+        public ActionResult ConsultarPerfil(long q)
+        {
+            q = long.Parse(Session["IdUsuario"].ToString());
+            var resp = model.ConsultarPerfil(q);
+            return View(resp);
+        }
+
     }
 }

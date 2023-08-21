@@ -907,8 +907,11 @@
     <Content Include="Views\Correo\EnviarCorreo.cshtml" />
     <Content Include="Views\Proyecto\ConsultarProyectoPorId.cshtml" />
     <Content Include="Views\Proyecto\NuevoTask.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Proyecto\ListadoProyectos.cshtml" />
     <Content Include="Views\Requerimientos\NuevoTask.cshtml" />
+=======
+>>>>>>> d80e16bcaa9b90c412c47254b514b7e053dacb76
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

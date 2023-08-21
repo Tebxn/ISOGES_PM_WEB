@@ -69,7 +69,7 @@
                         </li>
                         @*BACKLOG*@
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="@Url.Action("Perfil","Usuario")" aria-expanded="false">
+                            <a class="sidebar-link" href="@Url.Action("ConsultarPerfil","Usuario", new { q = @Session["IdUsuario"] })" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-user"></i>
                                 </span>
